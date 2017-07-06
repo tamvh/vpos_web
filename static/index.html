@@ -1,0 +1,888 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="theApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">   
+        <title>Web bán hàng - VPOS</title>
+
+        <!-- Bootstrap -->        
+        <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">        
+        <!-- Font Awesome -->
+        <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Custom Theme Style -->
+        <!-- jQuery -->        
+        <script src="assets/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap -->        
+        <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+        <script src="pos_config-1.04.js"></script>
+        <script src="app_define.js"></script>
+        <script src="app.js"></script>
+        <script src = "https://sandbox.zalopay.com.vn/qrcode/public/js/zalopay.js?ver=1494921725335"></script>
+
+        <script src="sidebar/sidebar.controller.js"></script>
+        <script src="sidebar/sidebar.service.js"></script>    
+        <script src="home/home.controller.js"></script>
+        <script src="header/header.controller.js"></script>    
+        <script src="product/product.controller.js"></script>
+        <script src="product/product.service.js"></script>  
+
+
+    </head>
+    <body>
+
+        <!-- HEADER AND NAVBAR -->
+        <!--    <header>
+                
+            </header>
+        
+             MAIN CONTENT AND INJECTED VIEWS 
+            <div id="main">
+        
+                 angular templating 
+                 this is where content will be injected 
+                <div ng-view></div>
+        
+            </div>-->
+        <div class="row">
+            <div class="x_panenel"> 
+                <div class="body" style="overflow-y: scroll;">    
+                    <div style="overflow-y: scroll; height: 100%">
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ededed;">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-check-square-o fa-6" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Tra da</td></tr>
+                                        <tr><td>1000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ededed;">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-check-square-o fa-6" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Tra da</td></tr>
+                                        <tr><td>1000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="">
+                            <div class="col-md-2 col-sm-3 col-xs-2" style="font-size: 3em;"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+                            <div class="col-md-8 col-sm-6 col-xs-4">
+                                <div style="display: inline-flex;float: left; margin-top: 8px;">
+                                    <table>
+                                        <tr><td>Bia</td></tr>
+                                        <tr><td>4000</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-3 col-xs-6" >                            
+                                <div style="display: inline-flex;float: right;">
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <input type="number" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 3px;border-radius: 6px;" >
+                                    </div>
+                                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                                        <a style="font-size: 3em; color: black;">
+                                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="footer" style="width:100%; height:80px;">
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="height: 50px; background-color: #ededed" >                            
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 35px;padding-left: 5px;padding-right: 5px;padding-top: 5px;width: 35px;">
+                                    <a style="font-size: 22px; color: black;">
+                                        <i class="fa fa fa-table" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td style="width: 35px;padding-top: 6px;">
+                                    <input type="number" style="margin-top: 2px;width: 35px;height: 35px;border-style: solid;border-width: 1px;border-radius: 5px;" >
+                                </td>
+                                <td style="width: 35px;padding-left: 5px;padding-right: 5px;padding-top: 5px;width: 35px;">
+                                    <a style="font-size: 22px; color: black;">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td style="width: 35px; padding-top: 6px;">
+                                    <input type="number" style="margin-top: 2px;width: 35px;height: 35px;border-style: solid;border-width: 1px;border-radius: 5px;" >
+                                </td>
+                                <td style="padding-left: 5px;    padding-top: 10px;">
+                                    <span>Tổng tiền</span>
+                                </td>
+                                <td style="text-align: right; padding-right: 10px;    padding-top: 10px;font-weight: bold;">
+                                    <span>5000</span>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                    <button class="btn" style="width: 100%;height: 45px;text-align: center;color: white;background-color: #0973b9; font-size: 20px;border-color: #d1d6dc;border-width: 0px;">Thu tiền</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    var height = $(window).height();
+    $('div.body').css('height', height - 72 + 'px');
+</script>
