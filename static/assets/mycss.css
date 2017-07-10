@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 7, 2017, 1:10:18 AM
+    Author     : tamvh
+*/
+
+.myfooter {
+    position: fixed;
+    bottom: 0;
+    height: 90px;
+    width: 100%;
+}
+.myheader {
+    position: fixed;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    background: gray;
+}
+
+.btn_plus {
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    max-height: 100%;  
+    max-width: 100%; 
+    width: 40px;
+    height: 40px;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+    background-color: graytext;
+}
+
+img {
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    max-height: 100%;  
+    max-width: 100%; 
+    width: 45px;
+    height: 45px;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+.top_image {
+    height: 55px; /*can be anything*/
+    width: 55px; /*can be anything*/
+    position: relative;   
+}
+.btn_bill {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}

@@ -1,0 +1,51 @@
+<div class="row" style = "margin-bottom: 50px">
+    <div class="x_panenel">   
+        <div class="header" style="overflow-y: scroll; height: 100%">
+            <div style="height: 50px; background-color: #0973b9;" >
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn" style="height: 50px;width: 20%;float: left ;text-align: left;color: white;padding-left: 10px;background-color: #0973b9;" ng-click="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="btn" style="height: 50px;width: 40%;float: left ;text-align: center;color: white;background-color: #0973b9;">DANH SÁCH MÓN ĐÃ CHỌN</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="body" style="overflow-y: scroll;background-color: #d1d6dc; ">    
+            <div style="height: 100%; 
+                 padding: 15px;
+                 background-color: white;">
+                <table class="table table-hover table-condensed table-bordered jambo_table bulk_action">
+                    <thead>
+                        <tr>
+                            <td class="col-md-4 col-sm-4 col-xs-4">Tên hàng</td>
+                            <td class="col-md-2 col-sm-2 col-xs-2">SL</td>
+                            <td class="col-md-3 col-sm-3 col-xs-3">Đơn giá</td>
+                            <td class="col-md-3 col-sm-3 col-xs-3">Thành tiền</td></tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in l_product">
+                            <td class="col-md-4 col-sm-4 col-xs-4">{{item.item_name}}</td>
+                            <td class="col-md-2 col-sm-2 col-xs-2">{{item.quantity}}</td>
+                            <td class="col-md-3 col-sm-3 col-xs-3">{{item.price | currency:"":0 }}</td>
+                            <td class="col-md-3 col-sm-3 col-xs-3">{{item.amount | currency:"":0}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Tổng tiền: <b>{{total_money | currency:"":0}} VNĐ</b></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class = "btn_bill">
+    <div style="width:100%; height:50px;">
+        <button class="btn" style="
+                width: 100%;
+                height: 50px;
+                text-align: center;
+                color: white;
+                background-color: #0973b9; 
+                font-size: 20px;
+                border-color: #d1d6dc;
+                border-width: 0px;" ng-click="thanhtoan()">THANH TOÁN</button>
+    </div>
+</div>

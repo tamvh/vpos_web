@@ -23,6 +23,10 @@ theApp.constant('RESOURCE_URL', RESOURCE_URL);
                     controller: 'ProductController',
                     templateUrl: 'product/product.view.html?v=' + posConfig.TEMPLATE_PRODUCT_VERSION
                 })
+                .when('/bill/', {
+                    controller: 'BillController',
+                    templateUrl: 'bill/bill.view.html?v=' + posConfig.TEMPLATE_BILL_VERSION
+                })
                 .otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
