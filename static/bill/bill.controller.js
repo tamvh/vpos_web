@@ -5,8 +5,8 @@
 
     theApp.controller('BillController', BillController);
 
-    BillController.$inject = ['$scope', 'BillService', '$rootScope', '$uibModal', '$timeout', '$location'];
-    function BillController($scope, BillService, $rootScope, $uibModal, $timeout, $location) {
+    BillController.$inject = ['$scope', 'BillService', '$rootScope', '$uibModal', '$timeout', '$location', 'PopupService'];
+    function BillController($scope, BillService, $rootScope, $uibModal, $timeout, $location, PopupService) {
         $scope.l_product = [];
         $scope.total_money = 0;
         $scope.init = function () {
@@ -38,13 +38,16 @@
                     var billid = response.dt.food_order;
                     BillService.doPayZalo(gen_uuid(), sid, billid, $scope.total_money, $scope.l_product).then(function (res) {
                         ZaloPay.hideLoading();
+                        alert(JSON.stringify(res));
                         if (res.err === 0) {
                             var zptranstoken = res.dt.zptranstoken;
                             var appid = res.dt.appid;
-                            ZaloPay.payOrder({
-                                appid: appid,
-                                zptranstoken: zptranstoken
-                            }, cb);
+                            if (sid === res.dt.invoice_session) {
+                                ZaloPay.payOrder({
+                                    appid: appid,
+                                    zptranstoken: zptranstoken
+                                }, cb);
+                            }
                         }
                     });
                 }
@@ -68,7 +71,7 @@
                 } else {
                     ZaloPay.showDialog({
                         title: "THÔNG BÁO",
-                        message: "Thanh toán thất bại, errorcode: " + data.errorCode,
+                        message: "Thanh toán thất bại",
                         button: "OK"
                     });
                 }

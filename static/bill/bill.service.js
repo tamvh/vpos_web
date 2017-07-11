@@ -11,11 +11,10 @@
         var merchant_code = MERCHANT_CODE;
         var http_tranpro = HTTP_TRANSPRO;
         var p_method = 1; // zalopay
-        var appTitle = "ZALOPAY-WEB";
+        var appTitle = "Chỗ ngồi: " + $rootScope.globals.table_number + " - " + $rootScope.globals.table_location;
         var machine_name = "W-VPOS";
         var key = "7VShsAFE3S4pS3lijpCkIxCDpzi7ljdS";
 
-        service.createOrder = createOrder;
         service.createQRCode = createQRCode;
         service.getListProduct = getListProduct;
         service.doGetPmsid = doGetPmsid;
@@ -41,6 +40,7 @@
             var data = $.param({
                 cm: cmd,
                 tk: token,
+                sid: sesId,
                 dt: dt
             });
             return $http.post(http_tranpro, data).then(handleSuccess, handleError('Error doPayZalo'));
@@ -70,21 +70,6 @@
                 dt: dt
             });
             return $http.post(url, data).then(handleSuccess, handleError('Error listing item'));
-        }
-
-        function createOrder(amount, arr_item, payMethod) {
-            var cmd = "﻿get_session";
-            var dtJSON = {
-                merchant_code: merchant_code,
-                food_order: "",
-                devid: ""
-            };
-            var dt = JSON.stringify(dtJSON);
-            var data = $.param({
-                cm: cmd,
-                dt: dt
-            });
-            return $http.post(http_tranpro, data).then(handleSuccess, handleError('Error listing item'));
         }
 
         function createQRCode(appid, zptranstoken) {
