@@ -1649,3 +1649,138 @@ java.util.concurrent.TimeoutException: Idle timeout expired: 30004/30000 ms
 2017-07-10 13:18:09  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@3cfb38e6{r=0,c=false,a=IDLE,uri=null}
 2017-07-10 13:18:09  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@13500fdd[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xF3+\x99\x90z%o...\x00\x08**\x00\x1d\x00\x17\x00\x18\x8a\x8a\x00\x01\x00>>>rome/59.0.3071.11...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
 2017-07-10 13:18:09  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@6c948e36{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 17:07:10  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@34d3dae8[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\x9fU\x1b\xDfr\x1e...\x00\x08\x9a\x9a\x00\x1d\x00\x17\x00\x18\x1a\x1a\x00\x01\x00>>>MRA58N) AppleWebK...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 17:07:10  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@7dc321c2[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\x03\x82\x80j\xEb\x89\xD5...\x00\x08\x8a\x8a\x00\x1d\x00\x17\x00\x18jj\x00\x01\x00>>>Build/MRA58N) App...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 17:07:10  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@36c73bd0{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 17:07:10  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@3d105a65{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 17:07:10  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@13500fdd[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xBf\x90\x91\xCf\x9a\x08\xD7...\x00\x08\x9a\x9a\x00\x1d\x00\x17\x00\x18\xCa\xCa\x00\x01\x00>>>0)\r\n\r\nKHTML, like...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 17:07:10  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@f526b21[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xD2=\xDc7fk\x96...\x00\x08::\x00\x1d\x00\x17\x00\x18::\x00\x01\x00>>>0)\r\n\r\ncko) Chrome...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 17:07:10  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@31c2663e{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 17:07:10  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@52460501{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 17:07:46  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@d609d78[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\x15\xA6\xAdy\x12\xA5 ...\x00\x08\xAa\xAa\x00\x1d\x00\x17\x00\x18zz\x00\x01\x00>>>rome/59.0.3071.11...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 17:07:46  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@2168b584{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 21:22:57  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-07-10 21:22:57  INFO AbstractConnector:320 - Stopped ServerConnector@26226140{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-07-10 21:22:57  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@334276a{/,null,UNAVAILABLE}
+2017-07-10 21:22:57  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@6875fb95{/static,null,UNAVAILABLE}
+2017-07-10 22:16:47  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:48  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-10 22:16:48  INFO local:839 - local: Created a new connection
+2017-07-10 22:16:49  INFO log:192 - Logging initialized @2940ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-07-10 22:16:49  INFO WebServer:66 - Start server...
+2017-07-10 22:16:49  INFO Server:372 - jetty-9.4.1.v20170120
+2017-07-10 22:16:49  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@107fc979{/static,null,AVAILABLE}
+2017-07-10 22:16:49  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@42d2f829{/,null,AVAILABLE}
+2017-07-10 22:16:49  INFO AbstractConnector:280 - Started ServerConnector@5a1ce13d{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-07-10 22:16:49  INFO Server:444 - Started @3300ms
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:48  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:53  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:53  INFO local:839 - local: Destroyed connection
+2017-07-10 22:19:53  INFO local:839 - local: Destroyed connection
+2017-07-10 22:56:38  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@38e0c77b[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xE3\xF2\xFc\xA7s\x0cI...\x00\x08\xFa\xFa\x00\x1d\x00\x17\x00\x18\xAa\xAa\x00\x01\x00>>>_12_5) AppleWebKi...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:38  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@10539610{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:39  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@41097099[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xB2\xB2LHtJU...\x00\x08\xBa\xBa\x00\x1d\x00\x17\x00\x18ZZ\x00\x01\x00>>>0170120)\r\n\r\n9.0.3...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:39  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@4fce96c8{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:42  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@5609dbba[p=1,l=200,c=8192,r=199]={\x16<<<\x03\x01\x00\xC3\x01\x00\x00\xBf\x03\x03\xE4\x8d\xEb\xD4\xB7\x00e...\x00\x08\x8a\x8a\x00\x1d\x00\x17\x00\x18\xDa\xDa\x00\x01\x00>>>70120)\r\n\r\n20)\r\n\r\n...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:42  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@227dfd4d{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@7d4d9a1d[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\x81\x8f3\x852\xDc\x1f...\x00\x08\x8a\x8a\x00\x1d\x00\x17\x00\x18\x8a\x8a\x00\x01\x00>>>Chrome/59.0.3071....\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@29cdb410{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@38e0c77b[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03%\x10z\xC9\xD6\x18\xCf...\x00\x08\x1a\x1a\x00\x1d\x00\x17\x00\x18\xCa\xCa\x00\x01\x00>>>_12_5) AppleWebKi...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@4bf11be9{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@3e5359e[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03Uq\xEe\x9f\xE1"\xE5...\x00\x08zz\x00\x1d\x00\x17\x00\x18\x9a\x9a\x00\x01\x00>>>170120)\r\n\r\nari/53...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@7c9f30e1{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@41097099[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\x93\xC1~\xC8\xA0tl...\x00\x08\xCa\xCa\x00\x1d\x00\x17\x00\x18\xCa\xCa\x00\x01\x00>>>0170120)\r\n\r\n9.0.3...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@1942919e{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@ef39cf3[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xE1C\xC3\x96\x8c\xDc\x8f...\x00\x08JJ\x00\x1d\x00\x17\x00\x18\x9a\x9a\x00\x01\x00>>>.0.3071.115 Safar...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@4f4a80c{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@7d4d9a1d[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03mxC<1\xB2\xBa...\x00\x08zz\x00\x1d\x00\x17\x00\x18::\x00\x01\x00>>>Chrome/59.0.3071....\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@3e5359e[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xE0V\x95\xF38i\xB6...\x00\x08ZZ\x00\x1d\x00\x17\x00\x18\xFa\xFa\x00\x01\x00>>>170120)\r\n\r\nari/53...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@4bec889e{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@1fddfd95{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:56:47  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@5609dbba[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03iK\xCe&C\xD82...\x00\x08JJ\x00\x1d\x00\x17\x00\x18**\x00\x01\x00>>>0)\r\n\r\n20)\r\n\r\n.115...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:56:47  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@50887e53{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:57:34  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@3e5359e[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03A\x1a|\xEa\xCe}z...\x00\x08\x1a\x1a\x00\x1d\x00\x17\x00\x18\xEa\xEa\x00\x01\x00>>>170120)\r\n\r\nari/53...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:57:34  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@4f4902a3{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:57:34  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@38e0c77b[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xCbb%3Ot\xEd...\x00\x08jj\x00\x1d\x00\x17\x00\x18::\x00\x01\x00>>>_12_5) AppleWebKi...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:57:34  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@403a0129{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:57:34  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@41097099[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\x11\x90\x18\x96\xE7$E...\x00\x08\x9a\x9a\x00\x1d\x00\x17\x00\x18\x9a\x9a\x00\x01\x00>>>0170120)\r\n\r\n9.0.3...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:57:34  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@13f351f5{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:57:34  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@7d4d9a1d[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xAe\xD8\xE5Z\x96\x80\xF5...\x00\x08\xDa\xDa\x00\x1d\x00\x17\x00\x18ZZ\x00\x01\x00>>>Chrome/59.0.3071....\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:57:34  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@5ae7b3be{r=0,c=false,a=IDLE,uri=null}
+2017-07-10 22:57:34  WARN HttpParser:1813 - Illegal character 0x16 in state=START for buffer HeapByteBuffer@3e5359e[p=1,l=204,c=8192,r=203]={\x16<<<\x03\x01\x00\xC7\x01\x00\x00\xC3\x03\x03\xF0\xC21\xF8\x98\x92\xF7...\x00\x08\xCa\xCa\x00\x1d\x00\x17\x00\x18\xFa\xFa\x00\x01\x00>>>170120)\r\n\r\nari/53...\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
+2017-07-10 22:57:34  WARN HttpParser:1426 - bad HTTP parsed: 400 Illegal character 0x16 for HttpChannelOverHttp@29b98873{r=0,c=false,a=IDLE,uri=null}
+2017-07-11 02:17:32  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-07-11 02:17:32  INFO AbstractConnector:320 - Stopped ServerConnector@5a1ce13d{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-07-11 02:17:32  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@42d2f829{/,null,UNAVAILABLE}
+2017-07-11 02:17:32  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@107fc979{/static,null,UNAVAILABLE}
+2017-07-11 09:47:31  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:32  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-07-11 09:47:32  INFO local:839 - local: Created a new connection
+2017-07-11 09:47:34  INFO log:192 - Logging initialized @3931ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-07-11 09:47:34  INFO WebServer:66 - Start server...
+2017-07-11 09:47:34  INFO Server:372 - jetty-9.4.1.v20170120
+2017-07-11 09:47:34  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@33f09e66{/static,null,AVAILABLE}
+2017-07-11 09:47:34  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@18d21309{/,null,AVAILABLE}
+2017-07-11 09:47:35  INFO AbstractConnector:280 - Started ServerConnector@74b25382{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-07-11 09:47:35  INFO Server:444 - Started @4338ms
+2017-07-11 09:49:28  WARN ResourceService:709 - 
+java.util.concurrent.TimeoutException: Idle timeout expired: 30003/30000 ms
+	at org.eclipse.jetty.io.IdleTimeout.checkIdleTimeout(IdleTimeout.java:166)
+	at org.eclipse.jetty.io.IdleTimeout$1.run(IdleTimeout.java:50)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:32  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:37  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:37  INFO local:839 - local: Destroyed connection
+2017-07-11 09:50:37  INFO local:839 - local: Destroyed connection

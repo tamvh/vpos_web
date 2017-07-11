@@ -3,11 +3,12 @@
     'use strict';
     theApp.factory('ProductService', ProductService);
 
-    ProductService.$inject = ['$rootScope', '$http', '$q', 'API_URL', 'ZALOPAY_URL'];
-    function ProductService($rootScope, $http, $q, API_URL, ZALOPAY_URL) {
+    ProductService.$inject = ['$http', 'API_URL', 'ZALOPAY_URL', 'MERCHANT_CODE'];
+    function ProductService($http, API_URL, ZALOPAY_URL, MERCHANT_CODE) {
         var service = {};
         var url = API_URL; 
         var url_zalopay = ZALOPAY_URL; 
+        var mc = MERCHANT_CODE;
         
         service.createOrder = createOrder;
         service.createQRCode = createQRCode;
@@ -17,24 +18,13 @@
 
         function getListProduct() {
             var cmd = "getlist";
-            var mc = "mbhtudong3";
             var dtJSON = {merchant_code: mc};
             var dt = JSON.stringify(dtJSON);
             var data = $.param({
                 cm: cmd,
                 dt: dt
-            });
-            var req = {
-                method: 'GET',
-                url: url,
-                headers: {
-//                  'Content-Type': undefined
-//                  'Access-Control-Allow-Origin': 'http://dev.vpos.zing.vn:8585/static/#/'
-                },
-                data: data
-            };
-            
-            return $http(req).then(handleSuccess, handleError('Error listing item'));
+            });           
+            return $http.post(url, data).then(handleSuccess, handleError('Error listing item'));   
         }
         
         function createOrder(amount, item){
