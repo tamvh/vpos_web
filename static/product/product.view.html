@@ -1,8 +1,13 @@
-<div class="row" style="margin-bottom: 90px;">
+<div class = "mysearch">
+    <form id="search">
+        <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
+    </form>
+</div>
+<div class="row" style="margin-bottom: 90px; margin-top: 39px;">
     <div class="x_panenel"> 
         <div class="body" style="overflow-y: scroll;">    
             <div style="overflow-y: scroll; height: 100%">
-                <div ng-repeat = "item in l_pro" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
+                <div ng-repeat = "item in l_pro | filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
                     <div class="col-md-2 col-sm-2 col-xs-2 top_image" ng-click="deleteItem(item)">
                         <img src="{{item.img}}" alt="{{item.item_name}}">
                     </div>
@@ -48,7 +53,7 @@
                         <td valign="middle">
                             <span>Bàn số: <b>{{table_number}}</b>, Vị trí: <b>{{table_location}}</b></span>
                         </td>
-                        
+
                     </tr>
                 </table>
             </div>
@@ -84,3 +89,7 @@
                 border-width: 0px;" ng-click="bill()">TẠM TÍNH</button>
     </div>
 </div>
+
+<script>
+    document.addEventListener("touchstart", function () {}, true);
+</script>

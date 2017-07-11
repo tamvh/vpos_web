@@ -7,6 +7,16 @@ and open the template in the editor.
     Created on : Jul 7, 2017, 1:10:18 AM
     Author     : tamvh
 */
+.mysearch {
+    position: fixed;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    background-color: #0973b9; 
+    text-align: center;
+    vertical-align: middle;
+    z-index:1000;
+}
 
 .myfooter {
     position: fixed;
@@ -64,4 +74,33 @@ img {
     bottom: 0;
     height: 50px;
     width: 100%;
+}
+
+#search {
+    margin-top: 5px;
+}
+
+#search input[type="text"] {
+    background: url(../img/search.png) no-repeat 10px 6px #fcfcfc;
+    border: 1px solid #d1d1d1;
+    font: normal 12px Arial,Helvetica,Sans-serif;
+    color: #bebebe;
+    width: 95%;
+    height: 30px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+}
+
+#search input[type="text"]:focus {
+    
 }
