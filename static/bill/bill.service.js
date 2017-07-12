@@ -30,7 +30,7 @@
                 description: appTitle,
                 appuser: merchant_code,
                 amount: amount,
-                devid: uuid,
+                devid: 'ffffffffffffffffffffffffffffffff',
                 items: items,
                 payment_method: p_method
             };
