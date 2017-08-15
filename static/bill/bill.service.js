@@ -11,7 +11,7 @@
         var merchant_code = MERCHANT_CODE;
         var http_tranpro = HTTP_TRANSPRO;
         var p_method = 1; // zalopay
-        var appTitle = "Bàn: " + $rootScope.globals.table_number + " - " + $rootScope.globals.table_location;
+        var appTitle = "ban: " + $rootScope.globals.table_number + " - " + $rootScope.globals.table_location;
         var machine_name = "W-VPOS";
         var key = "7VShsAFE3S4pS3lijpCkIxCDpzi7ljdS";
 

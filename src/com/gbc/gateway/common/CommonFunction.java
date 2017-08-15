@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -25,6 +26,10 @@ public class CommonFunction {
     private static String _currentDayFormat = "";
     public static final String KEY_TOKEN_LOGIN = "token_login";
     public static final String KEY_USERNAME = "username";
+    
+    public static final byte HEADER_HTML = 0;
+    public static final byte HEADER_JS = 1;
+    public static final byte HEADER_TEXT_PLAIN = 2;
 
     public static String getCurrentDateTimeString() {
         Calendar cal = new GregorianCalendar(TimeZone.getTimeZone("GMT+7"));
@@ -164,5 +169,25 @@ public class CommonFunction {
         }
         
         return ret;
+    }
+    
+    public static void prepareHeader(HttpServletResponse resp, byte type) {
+        resp.setCharacterEncoding("utf-8");
+        if (type == HEADER_HTML) {
+            resp.setContentType("text/html; charset=utf-8");
+        } else if (type == HEADER_JS) {
+            resp.setContentType("text/javascript; charset=utf-8");
+        } else if (type == HEADER_TEXT_PLAIN) {
+            resp.setContentType("text/plain; charset=utf-8");
+        }
+        String appName = Config.getParam("static", "app_name");
+        resp.addHeader("Server", appName);
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        //resp.setHeader("Access-Control-Allow-Methods", "GET POST");
+        resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+        //resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        resp.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+        resp.setHeader("Access-Control-Max-Age", "86400");
+
     }
 }

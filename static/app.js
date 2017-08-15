@@ -30,6 +30,10 @@ theApp.constant('HTTP_TRANSPRO', HTTP_TRANSPRO);
                     controller: 'BillController',
                     templateUrl: 'bill/bill.view.html?v=' + posConfig.TEMPLATE_BILL_VERSION
                 })
+                .when('/login/', {
+                    controller: 'LoginController',
+                    templateUrl: 'login/login.view.html?v=' + posConfig.TEMPLATE_LOGIN_VERSION
+                })
                 .otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -47,25 +51,7 @@ theApp.constant('HTTP_TRANSPRO', HTTP_TRANSPRO);
             $cookies.put('merchantCode', newtabInfo.merchantCode);
             localStorage.removeItem("newtabInfo");
         }
-
-        $rootScope.globals.currentUser.username = "mbh-bsc";
-
-
-        $rootScope.$on('$locationChangeStart', function (event, next, current) {           
-            $rootScope.menuItemList = [
-                {
-                    index: 0,
-                    title: "Sản phẩm",
-                    icon: "fa fa-dashboard",
-                    value: 1201,
-                    bshow: true,
-                    link: "#listitem",
-                    submenu: []
-                }
-            ];
-        });
-    }
-    ;
+    };
 
 
     theApp.directive('currencyInput', function ($filter, $browser) {

@@ -1825,3 +1825,278 @@ java.util.concurrent.TimeoutException: Idle timeout expired: 30003/30000 ms
 2017-07-12 10:40:49  INFO local:839 - local: Destroyed connection
 2017-07-12 10:40:49  INFO local:839 - local: Destroyed connection
 2017-07-12 10:40:49  INFO local:839 - local: Destroyed connection
+2017-07-12 18:20:44  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-07-12 18:20:44  INFO AbstractConnector:320 - Stopped ServerConnector@7dfe4eb3{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-07-12 18:20:44  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@71ef8d2d{/,null,UNAVAILABLE}
+2017-07-12 18:20:44  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@47a838cd{/static,null,UNAVAILABLE}
+2017-08-02 11:15:12  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:30  INFO local:848 - local: Can't create a new connection for jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 10 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1023)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:997)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:983)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:928)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2407)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2328)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:832)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:46)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:417)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:344)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at snaq.db.ConnectionPool.create(ConnectionPool.java:256)
+	at snaq.db.ConnectionPool.create(ConnectionPool.java:71)
+	at snaq.util.ObjectPool.checkOut(ObjectPool.java:377)
+	at snaq.util.ObjectPool.checkOut(ObjectPool.java:429)
+	at snaq.db.ConnectionPool.getConnection(ConnectionPool.java:425)
+	at com.gbc.gateway.database.MySqlFactory.getConnection(MySqlFactory.java:44)
+	at com.gbc.gateway.model.MerchantModel.loadDataFromMySQL(MerchantModel.java:61)
+	at com.gbc.gateway.model.MerchantModel.loadData(MerchantModel.java:48)
+	at com.gbc.gateway.main.ServiceDaemon.main(ServiceDaemon.java:28)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1137)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:356)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2504)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2346)
+	... 21 more
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:258)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:306)
+	... 23 more
+2017-08-02 11:15:30 ERROR MySqlFactory:46 - getConnection : Could not create connection to database server. Attempted reconnect 10 times. Giving up.
+2017-08-02 11:15:30 ERROR MerchantModel:88 - MerchantModel.loadDataFromMySQL: null
+java.lang.NullPointerException
+	at com.gbc.gateway.model.MerchantModel.loadDataFromMySQL(MerchantModel.java:62)
+	at com.gbc.gateway.model.MerchantModel.loadData(MerchantModel.java:48)
+	at com.gbc.gateway.main.ServiceDaemon.main(ServiceDaemon.java:28)
+2017-08-02 11:15:31  INFO log:192 - Logging initialized @20008ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-02 11:15:31  INFO WebServer:66 - Start server...
+2017-08-02 11:15:31  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-02 11:15:31  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@7290ef83{/static,null,AVAILABLE}
+2017-08-02 11:15:31  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@127880d1{/,null,AVAILABLE}
+2017-08-02 11:15:31  INFO AbstractConnector:280 - Started ServerConnector@49e550f4{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-02 11:15:31  INFO Server:444 - Started @20262ms
+2017-08-02 11:15:57  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:58  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:58  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:58  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:58  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:15:59  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-02 11:15:59  INFO local:839 - local: Created a new connection
+2017-08-02 11:16:00  INFO log:192 - Logging initialized @4503ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-02 11:16:01  INFO WebServer:66 - Start server...
+2017-08-02 11:16:01  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-02 11:16:01  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@1589e884{/static,null,AVAILABLE}
+2017-08-02 11:16:01  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@17466062{/,null,AVAILABLE}
+2017-08-02 11:16:01 ERROR WebServer:95 - Cannot start web server: Address already in use
+2017-08-02 11:16:01  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-08-02 11:16:01  INFO AbstractConnector:320 - Stopped ServerConnector@431e531b{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-02 11:16:01  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@17466062{/,null,UNAVAILABLE}
+2017-08-02 11:16:01  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@1589e884{/static,null,UNAVAILABLE}
+2017-08-02 11:53:52  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-08-02 11:53:52  INFO AbstractConnector:320 - Stopped ServerConnector@49e550f4{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-02 11:53:52  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@127880d1{/,null,UNAVAILABLE}
+2017-08-02 11:53:52  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@7290ef83{/static,null,UNAVAILABLE}
+2017-08-04 14:53:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:53:39  INFO local:848 - local: Can't create a new connection for jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 10 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1023)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:997)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:983)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:928)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2407)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2328)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:832)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:46)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:417)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:344)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at snaq.db.ConnectionPool.create(ConnectionPool.java:256)
+	at snaq.db.ConnectionPool.create(ConnectionPool.java:71)
+	at snaq.util.ObjectPool.checkOut(ObjectPool.java:377)
+	at snaq.util.ObjectPool.checkOut(ObjectPool.java:429)
+	at snaq.db.ConnectionPool.getConnection(ConnectionPool.java:425)
+	at com.gbc.gateway.database.MySqlFactory.getConnection(MySqlFactory.java:44)
+	at com.gbc.gateway.model.MerchantModel.loadDataFromMySQL(MerchantModel.java:61)
+	at com.gbc.gateway.model.MerchantModel.loadData(MerchantModel.java:48)
+	at com.gbc.gateway.main.ServiceDaemon.main(ServiceDaemon.java:28)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1137)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:356)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2504)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2346)
+	... 21 more
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:258)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:306)
+	... 23 more
+2017-08-04 14:53:39 ERROR MySqlFactory:46 - getConnection : Could not create connection to database server. Attempted reconnect 10 times. Giving up.
+2017-08-04 14:53:39 ERROR MerchantModel:88 - MerchantModel.loadDataFromMySQL: null
+java.lang.NullPointerException
+	at com.gbc.gateway.model.MerchantModel.loadDataFromMySQL(MerchantModel.java:62)
+	at com.gbc.gateway.model.MerchantModel.loadData(MerchantModel.java:48)
+	at com.gbc.gateway.main.ServiceDaemon.main(ServiceDaemon.java:28)
+2017-08-04 14:53:42  INFO log:192 - Logging initialized @22102ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-04 14:53:42  INFO WebServer:66 - Start server...
+2017-08-04 14:53:42  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-04 14:53:42  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@38faccb4{/static,null,AVAILABLE}
+2017-08-04 14:53:42  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@67a7e904{/,null,AVAILABLE}
+2017-08-04 14:53:42  INFO AbstractConnector:280 - Started ServerConnector@5662f163{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 14:53:42  INFO Server:444 - Started @23023ms
+2017-08-04 14:54:10  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-08-04 14:54:10  INFO AbstractConnector:320 - Stopped ServerConnector@5662f163{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 14:54:10  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@67a7e904{/,null,UNAVAILABLE}
+2017-08-04 14:54:10  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@38faccb4{/static,null,UNAVAILABLE}
+2017-08-04 14:54:20  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:20  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:20  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:20  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:20  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:20  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:20  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:21  INFO local:839 - local: Getting connection (user/password): jdbc:mysql://127.0.0.1:3306/zp_gateway?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true
+2017-08-04 14:54:21  INFO local:839 - local: Created a new connection
+2017-08-04 14:54:22  INFO log:192 - Logging initialized @3365ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-04 14:54:22  INFO WebServer:66 - Start server...
+2017-08-04 14:54:22  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-04 14:54:22  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@40267813{/static,null,AVAILABLE}
+2017-08-04 14:54:23  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@535c1b4c{/,null,AVAILABLE}
+2017-08-04 14:54:23  INFO AbstractConnector:280 - Started ServerConnector@7dd23615{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 14:54:23  INFO Server:444 - Started @3980ms
+2017-08-04 14:57:21  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:21  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:21  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:21  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:26  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:26  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:26  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:26  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:26  INFO local:839 - local: Destroyed connection
+2017-08-04 14:57:26  INFO local:839 - local: Destroyed connection
+2017-08-04 17:22:00  INFO ServiceDaemon:40 - Shutdown thread before webserver getinstance
+2017-08-04 17:22:00  INFO AbstractConnector:320 - Stopped ServerConnector@7dd23615{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:22:00  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@535c1b4c{/,null,UNAVAILABLE}
+2017-08-04 17:22:00  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@40267813{/static,null,UNAVAILABLE}
+2017-08-04 17:22:20  INFO log:192 - Logging initialized @845ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-04 17:22:20  INFO WebServer:58 - Start server...
+2017-08-04 17:22:20  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-04 17:22:21  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@411da5a8{/static,null,AVAILABLE}
+2017-08-04 17:22:21  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@3c813ab9{/,null,AVAILABLE}
+2017-08-04 17:22:21  INFO AbstractConnector:280 - Started ServerConnector@975bc43{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:22:21  INFO Server:444 - Started @1655ms
+2017-08-04 17:25:04  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-08-04 17:25:04  INFO AbstractConnector:320 - Stopped ServerConnector@975bc43{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:25:04  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@3c813ab9{/,null,UNAVAILABLE}
+2017-08-04 17:25:04  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@411da5a8{/static,null,UNAVAILABLE}
+2017-08-04 17:25:20  INFO log:192 - Logging initialized @937ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-04 17:25:20  INFO WebServer:58 - Start server...
+2017-08-04 17:25:20  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-04 17:25:20  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@6967c298{/static,null,AVAILABLE}
+2017-08-04 17:25:20  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@4fa138c6{/,null,AVAILABLE}
+2017-08-04 17:25:20  INFO AbstractConnector:280 - Started ServerConnector@58792cc9{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:25:20  INFO Server:444 - Started @1808ms
+2017-08-04 17:35:06  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-08-04 17:35:06  INFO AbstractConnector:320 - Stopped ServerConnector@58792cc9{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:35:06  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@4fa138c6{/,null,UNAVAILABLE}
+2017-08-04 17:35:06  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@6967c298{/static,null,UNAVAILABLE}
+2017-08-04 17:35:17  INFO log:192 - Logging initialized @1029ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-04 17:35:18  INFO WebServer:58 - Start server...
+2017-08-04 17:35:18  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-04 17:35:18  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@57d96b7e{/static,null,AVAILABLE}
+2017-08-04 17:35:18  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@7df80f22{/,null,AVAILABLE}
+2017-08-04 17:35:19  INFO AbstractConnector:280 - Started ServerConnector@143dbd17{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:35:19  INFO Server:444 - Started @2218ms
+2017-08-04 17:37:11  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-08-04 17:37:11  INFO AbstractConnector:320 - Stopped ServerConnector@143dbd17{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:37:11  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@7df80f22{/,null,UNAVAILABLE}
+2017-08-04 17:37:11  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@57d96b7e{/static,null,UNAVAILABLE}
+2017-08-04 17:37:20  INFO log:192 - Logging initialized @1003ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-08-04 17:37:20  INFO WebServer:58 - Start server...
+2017-08-04 17:37:21  INFO Server:372 - jetty-9.4.1.v20170120
+2017-08-04 17:37:21  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@5dd89340{/static,null,AVAILABLE}
+2017-08-04 17:37:21  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@41a5ea46{/,null,AVAILABLE}
+2017-08-04 17:37:21  INFO AbstractConnector:280 - Started ServerConnector@3b2070cb{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 17:37:21  INFO Server:444 - Started @1859ms
+2017-08-04 18:52:01  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-08-04 18:52:01  INFO AbstractConnector:320 - Stopped ServerConnector@3b2070cb{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-08-04 18:52:01  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@41a5ea46{/,null,UNAVAILABLE}
+2017-08-04 18:52:01  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@5dd89340{/static,null,UNAVAILABLE}

@@ -6,15 +6,7 @@
 package com.gbc.gateway.main;
 
 import com.gbc.gateway.common.Config;
-import com.gbc.gateway.controller.CashInController;
-import com.gbc.gateway.controller.DashboardController;
-import com.gbc.gateway.controller.InvoiceController;
 import com.gbc.gateway.controller.LoginController;
-import com.gbc.gateway.controller.PaymentCallbackController;
-import com.gbc.gateway.controller.ReportController;
-import com.gbc.gateway.controller.ZPCreateOrderController;
-import com.gbc.gateway.controller.ZPGetTransactionStatusController;
-import com.gbc.gateway.controller.ZPRefundController;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import org.apache.log4j.Logger;
@@ -67,17 +59,8 @@ public class WebServer implements Runnable{
             
             ServletContextHandler servletContext = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
             servletContext.setContextPath("/");
-            
-            servletContext.addServlet(ZPCreateOrderController.class, "/v001/zp/createorder/*");
-            servletContext.addServlet(ZPGetTransactionStatusController.class, "/v001/zp/getstatusbyapptransid/*");
-            servletContext.addServlet(ZPRefundController.class, "/v001/zp/refundtransaction/*");
-            servletContext.addServlet(PaymentCallbackController.class, "/v001/zp/payment/callback/*");                       
-            servletContext.addServlet(CashInController.class, "/v001/zp/cimerchant/*");
-            
-            servletContext.addServlet(InvoiceController.class, "/v001/zp/invoice/*");
-            servletContext.addServlet(DashboardController.class, "/v001/zp/dashboard/*");
-            servletContext.addServlet(LoginController.class, "/v001/zp/login/*");
-            servletContext.addServlet(ReportController.class, "/v001/zp/report/*");
+        
+            servletContext.addServlet(LoginController.class, "/v001/web/login/*");
 
             ResourceHandler resource_handler = new ResourceHandler();
             resource_handler.setResourceBase("./static/");

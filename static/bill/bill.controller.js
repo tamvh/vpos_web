@@ -56,23 +56,23 @@
         var cb = function (data) {
             if (typeof data === "object") {
                 if (data.error === 1) {
-                    ZaloPay.showDialog({
-                        title: "THÔNG BÁO",
-                        message: "Thanh toán đơn hàng thành công",
-                        button: "OK"
-                    });
+//                    ZaloPay.showDialog({
+//                        title: "THÔNG BÁO",
+//                        message: "Thanh toán đơn hàng thành công",
+//                        button: "OK"
+//                    });
                 } else if (data.error === 4) {
-                    ZaloPay.showDialog({
-                        title: "THÔNG BÁO",
-                        message: "Người dùng huỷ đơn hàng",
-                        button: "OK"
-                    });
+//                    ZaloPay.showDialog({
+//                        title: "THÔNG BÁO",
+//                        message: "Người dùng huỷ đơn hàng",
+//                        button: "OK"
+//                    });
                 } else {
-                    ZaloPay.showDialog({
-                        title: "THÔNG BÁO",
-                        message: "Thanh toán thất bại",
-                        button: "OK"
-                    });
+//                    ZaloPay.showDialog({
+//                        title: "THÔNG BÁO",
+//                        message: "Thanh toán thất bại",
+//                        button: "OK"
+//                    });
                 }
             }
         };
