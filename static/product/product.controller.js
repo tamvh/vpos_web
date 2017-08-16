@@ -36,9 +36,17 @@
             ProductService.getListProduct()
                     .then(function (response) {
                         if (response.err === 0) {
-                            $scope.l_pro = response.dt.items;
+                            
                             img_host = response.dt.img_host;
+                            
+                            for(var i in response.dt.items) {
+                                if(response.dt.items[i].status === 1) {
+                                    $scope.l_pro.push(response.dt.items[i]);
+                                }
+                            }
+                            
                             for (var i in $scope.l_pro) {
+                                
                                 $scope.l_pro[i].bgcolor = "white";
                                 if ($scope.l_pro[i].item_name.length > 25) {
                                     $scope.l_pro[i].name_view = $scope.l_pro[i].item_name.toString().substr(0, 24) + "...";
@@ -52,7 +60,10 @@
                                 $scope.l_pro[i].img_path = img_host + $scope.l_pro[i].img_path;
                                 $scope.l_pro[i].img_checked = "img/checked.png";
                                 $scope.l_pro[i].img = $scope.l_pro[i].img_path;
+                                
                             }
+                            
+                            
                         } else if (response.err === 101) {      // has not logged in
                             $location.path('/login');
                         } else {
