@@ -30,8 +30,7 @@
             }
         }
         $scope.getListProduct = function () {
-            initJsBrige();
-            ZaloPay.showLoading();
+            initJsBrige(); 
             get_params();
             ProductService.getListProduct()
                     .then(function (response) {
@@ -60,17 +59,15 @@
                                 $scope.l_pro[i].img_path = img_host + $scope.l_pro[i].img_path;
                                 $scope.l_pro[i].img_checked = "img/checked.png";
                                 $scope.l_pro[i].img = $scope.l_pro[i].img_path;
-                                
+                                $scope.l_pro[i].width_item = "col-md-10 col-sm-10 col-xs-10";
+                                $scope.l_pro[i].width_btn = "col-md-0 col-sm-0 col-xs-0";
                             }
-                            
-                            
                         } else if (response.err === 101) {      // has not logged in
                             $location.path('/login');
                         } else {
                             console.log("error getListProduct");
                         }
                     });
-            ZaloPay.hideLoading();
         };
         $scope.getListProduct();
 
@@ -78,6 +75,8 @@
             console.log("===select item===");
             for (var i in $scope.l_pro) {
                 if ($scope.l_pro[i].item_id === item.item_id) {
+                    $scope.l_pro[i].width_item = "col-md-7 col-sm-7 col-xs-7";
+                    $scope.l_pro[i].width_btn = "col-md-3 col-sm-3 col-xs-3";
                     if (item.quantity === "") {
                         item.quantity = 0;
                     }
@@ -129,11 +128,14 @@
                             $scope.l_pro[j].quantity = "";
                             $scope.l_pro[j].icon_minus = "";
                             $scope.l_pro[j].icon_plus = "";
+                            $scope.l_pro[j].width_item = "col-md-10 col-sm-10 col-xs-10";
+                            $scope.l_pro[j].width_btn = "col-md-0 col-sm-0 col-xs-0";
                             break;
                         }
                     }
                     $scope.total_money = $scope.total_money - foodItems[i].amount.toString();
                     foodItems.splice(i, 1);
+                    
                     _find = true;
                     break;
                 }
@@ -158,6 +160,8 @@
                                     $scope.l_pro[j].img = $scope.l_pro[j].img_path;
                                     $scope.l_pro[j].icon_minus = "";
                                     $scope.l_pro[j].icon_plus = "";
+                                    $scope.l_pro[j].width_item = "col-md-10 col-sm-10 col-xs-10";
+                                    $scope.l_pro[j].width_btn = "col-md-0 col-sm-0 col-xs-0";
                                     break;
                                 }
                                 $scope.l_pro[j].bgcolor = "#E0E0E0";
