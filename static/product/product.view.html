@@ -1,20 +1,56 @@
-<div class = "mysearch">
+<!--<div class = "mysearch">
     <div class="row ">
-        <div class="col-md-1 col-sm-1 col-xs-1" style="text-align: center; vertical-align: central;">
-            <img src="img/table.png" alt="menu" height="42" width="42">
-        </div>
         <div class="col-md-11 col-sm-11 col-xs-11">
             <form id="search">
                 <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
             </form>
         </div>
     </div>
+</div>-->
+<div class = "mytopweb">
+    <div style="
+             width: 10%;
+             height: 40px;
+             float: left;">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" style="width: 100%;height: 40px;background-color: #2196F3; color: white;font-size: 15px;" onclick="closeNav()">&#9776; DANH MỤC SẢN PHẨM</a>
+            
+            
+            <div ng-click="getProdInCategory('all')">
+                <a href="javascript:void(0)">Tất cả</a>
+            </div>
+            <div ng-repeat="category in l_categories">
+                <div ng-click="getProdInCategory(category.category_name)">
+                    <a href="javascript:void(0)">{{category.category_name}}</a>
+                </div>
+            </div>
+        </div>
+        <span class="mymenu" onclick="openNav()">&#9776;</span>
+        
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "270px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+    </div>
+    <div style="
+             width: 90%;
+             height: 40px;
+             float: right;">
+        <form id="search">
+            <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
+        </form>
+    </div>
 </div>
 <div class="row" style="margin-bottom: 90px; margin-top: 39px;">
     <div class="x_panenel"> 
         <div class="body" style="overflow-y: scroll;">    
             <div style="overflow-y: scroll; height: 100%">
-                <div ng-repeat = "item in l_pro | filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
+                <div ng-repeat = "item in l_pro| filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
                     <div class="col-md-2 col-sm-2 col-xs-2 top_image" ng-click="deleteItem(item)">
                         <img src="{{item.img}}" alt="{{item.item_name}}">
                     </div>

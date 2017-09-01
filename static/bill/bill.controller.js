@@ -5,12 +5,13 @@
 
     theApp.controller('BillController', BillController);
 
-    BillController.$inject = ['$scope', 'BillService', '$rootScope', '$uibModal', '$timeout', '$location', 'PopupService'];
-    function BillController($scope, BillService, $rootScope, $uibModal, $timeout, $location, PopupService) {
+    BillController.$inject = ['$scope', 'BillService', '$rootScope', '$cookies', '$uibModal', '$timeout', '$location', 'PopupService'];
+    function BillController($scope, BillService, $rootScope, $cookies, $uibModal, $timeout, $location, PopupService) {
         $scope.l_product = [];
         $scope.total_money = 0;
         $scope.init = function () {
-            $scope.l_product = $rootScope.globals.listItemSelected;
+            var foods = $cookies.get("fooditems");
+            $scope.l_product = JSON.parse(foods);
             var t_moey = 0;
             for (var i in $scope.l_product) {
                 t_moey = t_moey + $scope.l_product[i].amount;
@@ -51,6 +52,7 @@
                     });
                 }
             });
+            
         };
 
         var cb = function (data) {
