@@ -11,18 +11,21 @@
         $scope.total_money = 0;
         $scope.init = function () {
             var foods = $cookies.get("fooditems");
-            $scope.l_product = JSON.parse(foods);
-            var t_money = 0;
-            for (var i in $scope.l_product) {
-                t_money = t_money + $scope.l_product[i].amount;
+            if(foods + '' === '' || foods === 'undefined') {
+                $location.path("/");
+            } else {
+                $scope.l_product = JSON.parse(foods);
+                var t_money = 0;
+                for (var i in $scope.l_product) {
+                    t_money = t_money + $scope.l_product[i].amount;
+                }
+                $scope.total_money = t_money;
+                initJsBrige();
             }
-            $scope.total_money = t_money;
-            initJsBrige();
         };
         $scope.init();
 
         $scope.back = function () {
-//            $location.path("/");
             window.history.back();
         };
         function initJsBrige() {
