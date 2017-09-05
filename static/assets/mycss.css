@@ -8,6 +8,18 @@ and open the template in the editor.
     Author     : tamvh
 */
 
+.center {
+    width: 80%;
+    height: 80%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    font-size:25px;
+    cursor:pointer;
+    color:white;
+}
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -53,7 +65,6 @@ and open the template in the editor.
     font-size:25px;
     cursor:pointer;
     color:white;
-    margin-left: 10px;
 }
 .mytopweb {
     position: fixed;

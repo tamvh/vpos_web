@@ -2316,3 +2316,25 @@ java.lang.NullPointerException
 2017-09-01 15:29:04  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@4fa138c6{/,null,AVAILABLE}
 2017-09-01 15:29:04  INFO AbstractConnector:280 - Started ServerConnector@72bf3926{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
 2017-09-01 15:29:04  INFO Server:444 - Started @2947ms
+2017-09-01 17:55:30  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-01 17:55:30  INFO AbstractConnector:320 - Stopped ServerConnector@72bf3926{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-01 17:55:30  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@4fa138c6{/,null,UNAVAILABLE}
+2017-09-01 17:55:30  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@6967c298{/static,null,UNAVAILABLE}
+2017-09-02 22:46:03  INFO log:192 - Logging initialized @1047ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-02 22:46:03  INFO WebServer:58 - Start server...
+2017-09-02 22:46:03  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-02 22:46:04  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@49b6839c{/static,null,AVAILABLE}
+2017-09-02 22:46:04  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@51c8c0e8{/,null,AVAILABLE}
+2017-09-02 22:46:04  INFO AbstractConnector:280 - Started ServerConnector@6552e5e5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-02 22:46:04  INFO Server:444 - Started @1529ms
+2017-09-03 08:21:00  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-03 08:21:00  INFO AbstractConnector:320 - Stopped ServerConnector@6552e5e5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-03 08:21:00  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@51c8c0e8{/,null,UNAVAILABLE}
+2017-09-03 08:21:00  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@49b6839c{/static,null,UNAVAILABLE}
+2017-09-05 09:33:39  INFO log:192 - Logging initialized @706ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-05 09:33:40  INFO WebServer:58 - Start server...
+2017-09-05 09:33:40  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-05 09:33:40  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@49b6839c{/static,null,AVAILABLE}
+2017-09-05 09:33:40  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@51c8c0e8{/,null,AVAILABLE}
+2017-09-05 09:33:40  INFO AbstractConnector:280 - Started ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-05 09:33:40  INFO Server:444 - Started @1276ms

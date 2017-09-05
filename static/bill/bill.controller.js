@@ -12,17 +12,18 @@
         $scope.init = function () {
             var foods = $cookies.get("fooditems");
             $scope.l_product = JSON.parse(foods);
-            var t_moey = 0;
+            var t_money = 0;
             for (var i in $scope.l_product) {
-                t_moey = t_moey + $scope.l_product[i].amount;
+                t_money = t_money + $scope.l_product[i].amount;
             }
-            $scope.total_money = t_moey;
+            $scope.total_money = t_money;
             initJsBrige();
         };
         $scope.init();
 
         $scope.back = function () {
-            $location.path("/");
+//            $location.path("/");
+            window.history.back();
         };
         function initJsBrige() {
             ZaloPay.ready(() => {
@@ -52,7 +53,8 @@
                     });
                 }
             });
-            
+            $cookies.put("fooditems", '');
+            $cookies.put("totalmoney", '');
         };
 
         var cb = function (data) {
