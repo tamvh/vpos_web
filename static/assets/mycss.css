@@ -8,6 +8,13 @@ and open the template in the editor.
     Author     : tamvh
 */
 
+.press_btn {
+    width: 35px; 
+    padding: 0px; 
+    margin: 0px; 
+    margin-right: 3px;
+}
+
 .center {
     width: 80%;
     height: 80%;
