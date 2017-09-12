@@ -1,9 +1,9 @@
 <div class = "mytopweb">
     <div style="
-             display: flex;
-             width: 10%;
-             height: 40px;
-             float: left;">
+         display: flex;
+         width: 10%;
+         height: 40px;
+         float: left;">
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" style="width: 100%;height: 40px;background-color: #2196F3; color: white;font-size: 15px;" onclick="closeNav()">&#9776; DANH MỤC SẢN PHẨM</a>           
             <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
@@ -17,7 +17,7 @@
         <div class="center" onclick="openNav()">
             &#9776;
         </div>
-        
+
         <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "270px";
@@ -29,46 +29,45 @@
         </script>
     </div>
     <div style="
-             width: 90%;
-             height: 40px;
-             float: right;">
+         width: 90%;
+         height: 40px;
+         float: right;">
         <form id="search">
             <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
         </form>
     </div>
 </div>
-<div class="row" style="margin-bottom: 90px; margin-top: 39px;">
-    <div class="x_panenel"> 
-        <div class="body" style="overflow-y: scroll;">    
-            <div style="overflow-y: scroll; height: 100%">
-                <div ng-repeat = "item in l_pro| filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
-                    <div class="col-md-2 col-sm-2 col-xs-2 top_image" ng-click="deleteItem(item)">
-                        <img src="{{item.img}}" alt="{{item.item_name}}">
+<div class="row" style="margin-bottom: 90px; margin-top: 39px; margin-left: 0px; margin-right: 0px;width: 100%;">  
+    <div style="overflow-y: scroll; height: 100%;" >
+
+        <div ng-repeat = "item in l_pro| filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
+            <div class="col-md-2 col-sm-2 col-xs-2" ng-click="deleteItem(item)">
+                <div class ="top_image">
+                    <img src="{{item.img}}" alt="{{item.item_name}}">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6" ng-click="selectItem(item)">
+                <div style="display: inline-flex;float: left; margin-top: 8px; margin-left: 5px;">
+                    <table>
+                        <tr><td><b>{{item.name_view}}</b></td></tr>
+                        <tr><td>{{item.price| currency:"":0 }} vnđ</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4" ng-click="change(item)">
+                <div style="display: inline-flex;float: right;">
+                    <div class = "press_btn">
+                        <input ng-click="change_quantity('-', item)" type="button" value="{{item.icon_minus}}" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 0px;border-radius: 17px; text-align: center;background-color:white;" >
                     </div>
-                    <div class="{{item.width_item}}" ng-click="selectItem(item)">
-                        <div style="display: inline-flex;float: left; margin-top: 8px;">
-                            <table>
-                                <tr><td><b>{{item.name_view}}</b></td></tr>
-                                <tr><td>{{item.price| currency:"":0 }} vnđ</td></tr>
-                            </table>
-                        </div>
+                    <div style="width: 35px; padding: 0px; margin: 0px; margin-right: 3px;">
+                        <input ng-click="change_quantity('num', item)" type="button" ng-value ="item.quantity" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 0px;border-radius: 6px; text-align: center;background-color:white;" >
                     </div>
-                    <div class="{{item.width_btn}}">  
-                        <div style="display: inline-flex;float: right;">
-                            <div class = "press_btn">
-                                <input ng-click="change_quantity('-', item)" type="button" value="{{item.icon_minus}}" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 0px;border-radius: 17px; text-align: center;background-color:white;" >
-                            </div>
-                            <div style="width: 35px; padding: 0px; margin: 0px; margin-right: 3px;">
-                                <input type="button" ng-value ="item.quantity" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 0px;border-radius: 6px; text-align: center;background-color:white;" >
-                            </div>
-                            <div style="width: 35px; padding: 0px; margin: 0px;">
-                                <input ng-click="change_quantity('+', item)" type="button" value="{{item.icon_plus}}" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 0px;border-radius: 17px; text-align: center;background-color:white;" >
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width: 100%; height: 1px;background-color: #EEEEEE;">
+                    <div style="width: 35px; padding: 0px; margin: 0px;">
+                        <input ng-click="change_quantity('+', item)" type="button" value="{{item.icon_plus}}" style="margin-top: 11px;width: 34px;height: 34px;border-style: solid;border-width: 0px;border-radius: 17px; text-align: center;background-color:white;" >
                     </div>
                 </div>
+            </div>
+            <div style="width: 100%; height: 1px;background-color: #EEEEEE;">
             </div>
         </div>
     </div>
@@ -78,14 +77,14 @@
     <div style="width:100%; height:90px;">
         <div style="
              height: 40px; 
-             width: 50%;
+             width: 40%;
              float: left;">
 
             <div style="height: 40px; width: 100%; background-color: #ededed" >                            
                 <table class = "table">                
                     <tr style="background-color: #DCEDC8;">
                         <td valign="middle">
-                            <span>Bàn số: <b>{{table_number}}</b>, Vị trí: <b>{{table_location}}</b></span>
+                            <span>BÀN: <b>{{tablenumber}}</b>, VỊ TRÍ: <b>{{tablelocation}}</b></span>
                         </td>
 
                     </tr>
@@ -96,16 +95,13 @@
         <div style="
              display: inline-flex;
              height: 40px; 
-             width: 50%;
+             width: 60%;
              float: right;">
             <div style="height: 40px; width: 100%; background-color: #ededed" >                            
                 <table class = "table">                
                     <tr style="background-color: #DCEDC8;">
-                        <td valign="middle">
-                            <span>Tổng tiền:</span>
-                        </td>
                         <td align="center" valign="middle" style="text-align: right; vertical-align:middle; padding-right: 10px; font-weight: bold;">
-                            <span>{{total_money| currency:"":0 }} VNĐ</span>
+                            <span>TỔNG TIỀN: {{totalmoney| currency:"":0 }} VNĐ</span>
                         </td>
                     </tr>
                 </table>

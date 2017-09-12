@@ -13,12 +13,13 @@
         $scope.appid = 0;
         $scope.l_pro = [];
         $scope.l_categories = [];
-        $scope.total_money = 0;
-        $scope.table_number = "#";
-        $scope.table_location = "#";
+        $scope.totalmoney = 0;
+        $scope.tablenumber = "#";
+        $scope.tablelocation = "#";
         var foodItems = [];
         var dt_items = [];
         var img_host = "";
+        var find_btn_area = false;
         function get_params() {
             var cur_url = window.location.href;
             if (cur_url.split('?').length === 2) {
@@ -26,8 +27,8 @@
                 if (params.split('=').length === 2) {
                     var dt = params.split('=')[1];
                     var json_obj = JSON.parse(decodeURI(dt));
-                    $scope.table_number = json_obj.table_number;
-                    $scope.table_location = json_obj.table_location;
+                    $scope.tablenumber = json_obj.tablenumber;
+                    $scope.tablelocation = json_obj.tablelocation;
                 }
             }
         }
@@ -60,6 +61,30 @@
             document.getElementById("mySidenav").style.width = "0";
         };
 
+        $scope.gettotal_money = function() {
+            var _soluong = 0;
+            var _amount = 0;
+            var _price = 0;
+            var _total_amout = 0;
+            
+            var foods = $cookies.get("fooditems");
+            console.log('food: ' + foods);
+            var arr_food = [];
+            if (foods + '' !== '' && foods + '' !== 'undefined') {
+                arr_food = JSON.parse(foods);
+                foodItems = arr_food;
+            }
+           
+            for (var j in foodItems) {
+                _soluong = foodItems[j].quantity;
+                _price = foodItems[j].price;
+                _amount = _price * _soluong;
+                _total_amout = _total_amout + _amount;
+            }
+            $scope.totalmoney = _total_amout;
+            $cookies.put("totalmoney", $scope.totalmoney);
+        };
+
         $scope.getListProduct = function () {
             initJsBrige();
             get_params();
@@ -83,18 +108,12 @@
                             }
                             dt_items = response.dt.items;
                             
-                            var _total_money = $cookies.get("totalmoney");
-                            if(_total_money + '' === '' || _total_money + '' === 'undefined') {
-                                $scope.total_money = 0;
-                            } else {
-                                $scope.total_money = parseInt(_total_money);
-                            }
-                            
                             var foods = $cookies.get("fooditems");
                             var arr_food = [];
                             if (foods + '' !== '' && foods + '' !== 'undefined') {
                                 arr_food = JSON.parse(foods);
                                 foodItems = arr_food;
+                                find_btn_area = true;  
                             }
                             if (arr_food.length > 0) {
                                 for (var i in dt_items) {
@@ -113,8 +132,6 @@
                                         dt_items[i].icon_minus = "";
                                         dt_items[i].icon_plus = "";
                                         dt_items[i].bgcolor = "white";
-                                        dt_items[i].width_item = "col-md-10 col-sm-10 col-xs-10";
-                                        dt_items[i].width_btn = "col-md-0 col-sm-0 col-xs-0";
                                         for (var j in arr_food) {
                                             if (arr_food[j].index === dt_items[i].item_id) {
                                                 dt_items[i].img = "img/checked.png";
@@ -122,8 +139,6 @@
                                                 dt_items[i].icon_minus = "-";
                                                 dt_items[i].icon_plus = "+";
                                                 dt_items[i].bgcolor = "#E0E0E0";
-                                                dt_items[i].width_item = "col-md-7 col-sm-7 col-xs-7";
-                                                dt_items[i].width_btn = "col-md-3 col-sm-3 col-xs-3";
                                                 break;
                                             }
                                         }
@@ -147,8 +162,6 @@
                                         dt_items[i].img_path = img_host + dt_items[i].img_path;
                                         dt_items[i].img_checked = "img/checked.png";
                                         dt_items[i].img = dt_items[i].img_path;
-                                        dt_items[i].width_item = "col-md-10 col-sm-10 col-xs-10";
-                                        dt_items[i].width_btn = "col-md-0 col-sm-0 col-xs-0";
                                         $scope.l_pro.push(dt_items[i]);
                                     }
                                 }
@@ -159,6 +172,7 @@
                             console.log("error getListProduct");
                         }
                     });
+            $scope.gettotal_money();
         };
         $scope.getListProduct();
         function setItem(item) {
@@ -172,10 +186,9 @@
         }
         $scope.selectItem = function (item) {
             console.log("===select item===");
+            find_btn_area = true;
             for (var i in $scope.l_pro) {
                 if ($scope.l_pro[i].item_id === item.item_id) {
-                    $scope.l_pro[i].width_item = "col-md-7 col-sm-7 col-xs-7";
-                    $scope.l_pro[i].width_btn = "col-md-3 col-sm-3 col-xs-3";
                     if (item.quantity === "") {
                         item.quantity = 0;
                     }
@@ -195,23 +208,24 @@
                         price: item.price,
                         amount: item_amount,
                         original_price: 0.0,
-                        promotion_type: 0.0
+                        promotion_type: 0.0,
+                        note:''
                     };
 
                     for (var j in foodItems) {
                         if (foodItems[j].index === item.item_id) {
                             foodItems[j].quantity = foodItems[j].quantity + 1;
                             foodItems[j].amount = foodItems[j].quantity * foodItems[j].price;
-                            $scope.total_money = $scope.total_money + foodItems[j].amount - ((foodItems[j].quantity - 1) * foodItems[j].price);
-                            $cookies.put("totalmoney", $scope.total_money);
+                            $cookies.put("fooditems", JSON.stringify(foodItems));
+                            $scope.gettotal_money();
                             _find = false;
                             break;
                         }
                     }
                     if (_find) {
                         foodItems.push(_item);
-                        $scope.total_money = $scope.total_money + _item.amount;
-                        $cookies.put("totalmoney", $scope.total_money);
+                        $cookies.put("fooditems", JSON.stringify(foodItems));
+                        $scope.gettotal_money();
                     }
 
                     break;
@@ -231,16 +245,12 @@
                             $scope.l_pro[j].quantity = "";
                             $scope.l_pro[j].icon_minus = "";
                             $scope.l_pro[j].icon_plus = "";
-                            $scope.l_pro[j].width_item = "col-md-10 col-sm-10 col-xs-10";
-                            $scope.l_pro[j].width_btn = "col-md-0 col-sm-0 col-xs-0";
-
                             break;
                         }
                     }
-                    $scope.total_money = $scope.total_money - foodItems[i].amount.toString();
-                    $cookies.put("totalmoney", $scope.total_money);
                     foodItems.splice(i, 1);
-
+                    $cookies.put("fooditems", JSON.stringify(foodItems));
+                    $scope.gettotal_money();
                     _find = true;
                     break;
                 }
@@ -248,15 +258,57 @@
             if (!_find) {
                 $scope.selectItem(item);
             }
+            find_btn_area = false;
         };
 
+        $scope.change = function(item) {
+            console.log('select area');
+            if(find_btn_area) {
+                return;
+            }
+            find_btn_area = false;
+            for (var i in foodItems) {
+                if (item.item_id === foodItems[i].index)
+                {
+                    find_btn_area = true;
+                    break;
+                }
+            }
+            if(!find_btn_area) {
+                console.log('add new item');
+                $scope.selectItem(item);
+            }
+            find_btn_area = true;    
+        };
+        
         $scope.change_quantity = function (_math, item) {
+            console.log('change quantity');
+            var _find_minus = false;
+            var _find_plus = false;
+            var _find_num = false;
+            if(!find_btn_area) {
+                return;
+            }
+            if(_math === "num") {
+                for (var i in foodItems) {
+                    if (item.item_id === foodItems[i].index)
+                    {
+                        _find_num = true;
+                        break;
+                    }
+                }
+                if(!_find_num) {
+                    console.log('add new item');
+                    $scope.selectItem(item);
+                }
+            }
+            
             if (_math === "-") {
                 for (var i in foodItems) {
                     if (item.item_id === foodItems[i].index)
                     {
-                        $scope.total_money = $scope.total_money - foodItems[i].amount;
                         foodItems.splice(i, 1);
+                        $cookies.put("fooditems", JSON.stringify(foodItems));
                         for (var j in $scope.l_pro) {
                             if ($scope.l_pro[j].item_id === item.item_id) {
                                 if ($scope.l_pro[j].quantity === 1) {
@@ -265,8 +317,7 @@
                                     $scope.l_pro[j].img = $scope.l_pro[j].img_path;
                                     $scope.l_pro[j].icon_minus = "";
                                     $scope.l_pro[j].icon_plus = "";
-                                    $scope.l_pro[j].width_item = "col-md-10 col-sm-10 col-xs-10";
-                                    $scope.l_pro[j].width_btn = "col-md-0 col-sm-0 col-xs-0";
+                                    $scope.gettotal_money();
                                     break;
                                 }
                                 $scope.l_pro[j].bgcolor = "#E0E0E0";
@@ -279,16 +330,22 @@
                                     price: item.price,
                                     amount: $scope.l_pro[j].quantity * item.price,
                                     original_price: 0.0,
-                                    promotion_type: 0.0
+                                    promotion_type: 0.0,
+                                    note:''
                                 };
                                 foodItems.push(_item);
-                                $scope.total_money = $scope.total_money + _item.amount;
-                                $cookies.put("totalmoney", $scope.total_money);
+                                $cookies.put("fooditems", JSON.stringify(foodItems));
+                                $scope.gettotal_money();
                                 break;
                             }
                         }
+                        _find_minus = true;
                         break;
                     }
+                }
+                if(!_find_minus) {
+                    console.log('add new item');
+                    $scope.selectItem(item);
                 }
             }
 
@@ -296,8 +353,8 @@
                 for (var i in foodItems) {
                     if (item.item_id === foodItems[i].index)
                     {
-                        $scope.total_money = $scope.total_money - foodItems[i].amount;
                         foodItems.splice(i, 1);
+                        $cookies.put("fooditems", JSON.stringify(foodItems));
                         for (var j in $scope.l_pro) {
                             if ($scope.l_pro[j].item_id === item.item_id) {
                                 $scope.l_pro[j].quantity = $scope.l_pro[j].quantity + 1;
@@ -308,26 +365,35 @@
                                     price: item.price,
                                     amount: $scope.l_pro[j].quantity * item.price,
                                     original_price: 0.0,
-                                    promotion_type: 0.0
+                                    promotion_type: 0.0,
+                                    note:''
                                 };
                                 foodItems.push(_item);
-                                $scope.total_money = $scope.total_money + _item.amount;
-                                $cookies.put("totalmoney", $scope.total_money);
+                                $cookies.put("fooditems", JSON.stringify(foodItems));
+                                $scope.gettotal_money();
                                 break;
                             }
                         }
+                        _find_plus = true;
                         break;
                     }
                 }
+                if(!_find_plus) {
+                    console.log('add new item plus');
+                    $scope.selectItem(item);
+                }
             }
         };
+                
+        
 
         $scope.bill = function () {
+            
             if (foodItems.length > 0) {
                 $cookies.put("fooditems", JSON.stringify(foodItems));
                 $rootScope.globals.listItemSelected = foodItems;
-                $rootScope.globals.table_number = $scope.table_number;
-                $rootScope.globals.table_location = $scope.table_location;
+                $rootScope.globals.tablenumber = $scope.tablenumber;
+                $rootScope.globals.tablelocation = $scope.tablelocation;
                 $location.path("/bill");
             } else {
                 PopupService.displayPopup('Bạn vui lòng chọn sản phẩm trước khi thanh toán.');

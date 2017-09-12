@@ -16,17 +16,20 @@
                 <table class="table table-hover table-condensed table-bordered jambo_table bulk_action">
                     <thead>
                         <tr>
-                            <td class="col-md-4 col-sm-4 col-xs-4">Tên hàng</td>
-                            <td class="col-md-2 col-sm-2 col-xs-2">SL</td>
-                            <td class="col-md-3 col-sm-3 col-xs-3">Đơn giá</td>
-                            <td class="col-md-3 col-sm-3 col-xs-3">Thành tiền</td></tr>
+                            <td class="col-md-3 col-sm-3 col-xs-3">Tên hàng</td>
+                            <td class="col-md-1 col-sm-1 col-xs-1">SL</td>
+                            <td class="col-md-2 col-sm-2 col-xs-2">Đơn giá</td>
+                            <td class="col-md-2 col-sm-2 col-xs-2">Thành tiền</td>
+                            <td class="col-md-4 col-sm-4 col-xs-4">Ghi chú</td>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in l_product">
-                            <td class="col-md-4 col-sm-4 col-xs-4">{{item.item_name}}</td>
-                            <td class="col-md-2 col-sm-2 col-xs-2">{{item.quantity}}</td>
-                            <td class="col-md-3 col-sm-3 col-xs-3">{{item.price | currency:"":0 }}</td>
-                            <td class="col-md-3 col-sm-3 col-xs-3">{{item.amount | currency:"":0}}</td>
+                        <tr ng-repeat="item in l_product" ng-click="openpopup(item)">
+                            <td class="col-md-3 col-sm-3 col-xs-3">{{item.item_name}}</td>
+                            <td class="col-md-1 col-sm-1 col-xs-1">{{item.quantity}}</td>
+                            <td class="col-md-2 col-sm-2 col-xs-2">{{item.price2k}}</td>
+                            <td class="col-md-2 col-sm-2 col-xs-2">{{item.amount2k}}</td>
+                            <td class="col-md-4 col-sm-4 col-xs-4">{{item.note}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -49,3 +52,26 @@
                 border-width: 0px;" ng-click="pay()">THANH TOÁN</button>
     </div>
 </div>
+
+<script type="text/ng-template" id="PopupAddNote.html">
+    <form name="addForm">
+        <div style= "text-align: center;">
+            <h5 class="modal-title">Thêm ghi chú món ăn</h5>
+            <p>({{item_name}})</p>
+        </div>
+            
+        <div class="row" style = "margin: 10px;">
+           <div class="col-md-12 col-sm-12 col-xs-12">
+               <input type="text" id="focusElement" name="code" class="form-control" ng-model="item_code" ng-keydown="typingItemNote()" placeholder = "Ví dụ: ít hành, nhiều bún,...">
+               <span class="red" ng-show="errItemCodeOverCharacter">Ghi chú không quá 20 kí tự</span>
+           </div>
+        </div>                                             
+
+        <div class="row" style= "text-align: center;">
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                <button class="btn btn-primary" type="submit" ng-click="ok()" ng-disabled="clicked">Lưu</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Đóng</button>
+            </div>
+        </div>
+    </form>
+</script>

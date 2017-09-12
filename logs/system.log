@@ -2338,3 +2338,73 @@ java.lang.NullPointerException
 2017-09-05 09:33:40  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@51c8c0e8{/,null,AVAILABLE}
 2017-09-05 09:33:40  INFO AbstractConnector:280 - Started ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
 2017-09-05 09:33:40  INFO Server:444 - Started @1276ms
+2017-09-05 20:27:00  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-05 20:27:00  INFO AbstractConnector:320 - Stopped ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-05 20:27:00  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@51c8c0e8{/,null,UNAVAILABLE}
+2017-09-05 20:27:00  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@49b6839c{/static,null,UNAVAILABLE}
+2017-09-06 11:16:42  INFO log:192 - Logging initialized @934ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-06 11:16:42  INFO WebServer:58 - Start server...
+2017-09-06 11:16:43  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-06 11:16:43  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@6967c298{/static,null,AVAILABLE}
+2017-09-06 11:16:43  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@4fa138c6{/,null,AVAILABLE}
+2017-09-06 11:16:43  INFO AbstractConnector:280 - Started ServerConnector@69c33e95{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-06 11:16:43  INFO Server:444 - Started @1941ms
+2017-09-06 15:48:36  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-06 15:48:36  INFO AbstractConnector:320 - Stopped ServerConnector@69c33e95{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-06 15:48:36  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@4fa138c6{/,null,UNAVAILABLE}
+2017-09-06 15:48:36  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@6967c298{/static,null,UNAVAILABLE}
+2017-09-06 16:38:26  INFO log:192 - Logging initialized @1058ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-06 16:38:26  INFO WebServer:58 - Start server...
+2017-09-06 16:38:26  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-06 16:38:27  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@49b6839c{/static,null,AVAILABLE}
+2017-09-06 16:38:27  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@51c8c0e8{/,null,AVAILABLE}
+2017-09-06 16:38:27  INFO AbstractConnector:280 - Started ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-06 16:38:27  INFO Server:444 - Started @2218ms
+2017-09-06 18:10:24  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-06 18:10:24  INFO AbstractConnector:320 - Stopped ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-06 18:10:24  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@51c8c0e8{/,null,UNAVAILABLE}
+2017-09-06 18:10:24  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@49b6839c{/static,null,UNAVAILABLE}
+2017-09-07 15:25:27  INFO log:192 - Logging initialized @1119ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-07 15:25:28  INFO WebServer:58 - Start server...
+2017-09-07 15:25:28  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-07 15:25:28  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@d8cde96{/static,null,AVAILABLE}
+2017-09-07 15:25:28  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@32f5b1fb{/,null,AVAILABLE}
+2017-09-07 15:25:28  INFO AbstractConnector:280 - Started ServerConnector@72bf3926{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-07 15:25:28  INFO Server:444 - Started @2314ms
+2017-09-07 19:32:25  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-07 19:32:25  INFO AbstractConnector:320 - Stopped ServerConnector@72bf3926{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-07 19:32:25  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@32f5b1fb{/,null,UNAVAILABLE}
+2017-09-07 19:32:25  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@d8cde96{/static,null,UNAVAILABLE}
+2017-09-11 09:48:31  INFO log:192 - Logging initialized @769ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-11 09:48:31  INFO WebServer:58 - Start server...
+2017-09-11 09:48:31  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-11 09:48:31  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@49b6839c{/static,null,AVAILABLE}
+2017-09-11 09:48:31  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@51c8c0e8{/,null,AVAILABLE}
+2017-09-11 09:48:32  INFO AbstractConnector:280 - Started ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-11 09:48:32  INFO Server:444 - Started @1566ms
+2017-09-11 13:51:03  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-11 13:51:03  INFO AbstractConnector:320 - Stopped ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-11 13:51:03  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@51c8c0e8{/,null,UNAVAILABLE}
+2017-09-11 13:51:03  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@49b6839c{/static,null,UNAVAILABLE}
+2017-09-11 13:52:37  INFO log:192 - Logging initialized @918ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-11 13:52:37  INFO WebServer:58 - Start server...
+2017-09-11 13:52:37  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-11 13:52:38  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@49b6839c{/static,null,AVAILABLE}
+2017-09-11 13:52:38  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@51c8c0e8{/,null,AVAILABLE}
+2017-09-11 13:52:38  INFO AbstractConnector:280 - Started ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-11 13:52:38  INFO Server:444 - Started @1613ms
+2017-09-11 17:33:42  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-11 17:33:42  INFO AbstractConnector:320 - Stopped ServerConnector@266298b5{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-11 17:33:42  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@51c8c0e8{/,null,UNAVAILABLE}
+2017-09-11 17:33:42  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@49b6839c{/static,null,UNAVAILABLE}
+2017-09-11 21:01:40  INFO log:192 - Logging initialized @1283ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-09-11 21:01:40  INFO WebServer:58 - Start server...
+2017-09-11 21:01:40  INFO Server:372 - jetty-9.4.1.v20170120
+2017-09-11 21:01:41  INFO ContextHandler:791 - Started o.e.j.s.h.ContextHandler@6967c298{/static,null,AVAILABLE}
+2017-09-11 21:01:41  INFO ContextHandler:791 - Started o.e.j.s.ServletContextHandler@4fa138c6{/,null,AVAILABLE}
+2017-09-11 21:01:41  INFO AbstractConnector:280 - Started ServerConnector@58792cc9{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-11 21:01:41  INFO Server:444 - Started @2368ms
+2017-09-12 03:19:30  INFO ServiceDaemon:32 - Shutdown thread before webserver getinstance
+2017-09-12 03:19:30  INFO AbstractConnector:320 - Stopped ServerConnector@58792cc9{HTTP/1.1,[http/1.1]}{0.0.0.0:8585}
+2017-09-12 03:19:30  INFO ContextHandler:932 - Stopped o.e.j.s.ServletContextHandler@4fa138c6{/,null,UNAVAILABLE}
+2017-09-12 03:19:30  INFO ContextHandler:932 - Stopped o.e.j.s.h.ContextHandler@6967c298{/static,null,UNAVAILABLE}

@@ -142,7 +142,7 @@ img {
 .top_image {
     height: 55px; /*can be anything*/
     width: 55px; /*can be anything*/
-    position: relative;   
+    position: relative;    
 }
 .btn_bill {
     position: fixed;

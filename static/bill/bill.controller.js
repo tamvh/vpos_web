@@ -9,16 +9,22 @@
     function BillController($scope, BillService, $rootScope, $cookies, $uibModal, $timeout, $location, PopupService) {
         $scope.l_product = [];
         $scope.total_money = 0;
+        $scope.errItemCodeOverCharacter = false;
+        $scope.item_code = '';
         $scope.init = function () {
             var foods = $cookies.get("fooditems");
+            console.log('foods: ' + foods);
             if(foods + '' === '' || foods === 'undefined') {
                 $location.path("/");
             } else {
                 $scope.l_product = JSON.parse(foods);
                 var t_money = 0;
                 for (var i in $scope.l_product) {
+                    $scope.l_product[i].price2k = (parseInt($scope.l_product[i].price) / 1000) + 'K';
+                    $scope.l_product[i].amount2k = (parseInt($scope.l_product[i].amount) / 1000) + 'K';
                     t_money = t_money + $scope.l_product[i].amount;
                 }
+                $cookies.put("fooditems", JSON.stringify($scope.l_product));
                 $scope.total_money = t_money;
                 initJsBrige();
             }
@@ -33,6 +39,42 @@
                 console.log("ZaloPayBridge is ready");
             });
         }
+        
+        $scope.openpopup = function(item) {
+            console.log('init item: ' + JSON.stringify(item));
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'PopupAddNote.html',
+                controller: 'AddNoteController',
+                resolve: {
+                    item: function(){
+                        return item;
+                    }
+                }
+            });
+        };
+        
+        $scope.typingItemNote = function() {
+            console.log("tying: " + $scope.item_code + '');
+            var typing = $scope.item_code + '';
+            if(typing.length > 20) {
+                typing = typing.substring(0, 19);
+                $scope.item_code = typing;
+                $scope.errItemCodeOverCharacter = true;
+            } else {
+                $scope.item_code = typing;
+                $scope.errItemCodeOverCharacter = false;
+            }
+        };
+        
+        $scope.ok = function() {
+            
+        };
+        
+        $scope.cancel = function() {
+            //$uibModalInstance.close(); 
+        };
+        
         $scope.pay = function () {
             ZaloPay.showLoading();
             var uuid = gen_uuid();
