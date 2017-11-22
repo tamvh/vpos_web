@@ -8,7 +8,7 @@
             <a href="javascript:void(0)" class="closebtn" style="width: 100%;height: 40px;background-color: #2196F3; color: white;font-size: 15px;" onclick="closeNav()">&#9776; DANH MỤC SẢN PHẨM</a>           
             <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
             <div ng-repeat="category in l_categories">
-                <div ng-click="getProdInCategory(category.category_name)">
+                <div ng-click="getProdInCategory(category)">
                     <a href="javascript:void(0)" style="text-transform:uppercase; background-color: {{category.category_color}}">&raquo; {{category.category_name}}</a>
                 </div>
                 <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>

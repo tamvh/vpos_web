@@ -33,15 +33,10 @@
             }
         }
 
-        $scope.getProdInCategory = function (cate_name) {
+        $scope.getProdInCategory = function (cate) {
             $scope.l_pro.splice(0, $scope.l_pro.length);
-            for (var j in $scope.l_categories) {
-                if (cate_name === $scope.l_categories[j].category_name) {
-                    $scope.l_categories[j].category_color = "#E0E0E0";
-                } else {
-                    $scope.l_categories[j].category_color = "#FAFAFA";
-                }
-            }
+            var cate_name = cate.category_name;
+            var cate_id = cate.category_id;
             if (cate_name === "Tất cả") {
                 for (var i in dt_items) {
                     if (dt_items[i].status === 1) {
@@ -51,8 +46,16 @@
                 document.getElementById("mySidenav").style.width = "0";
                 return;
             }
+            for (var j in $scope.l_categories) {
+                if (cate_id === $scope.l_categories[j].category_id) {
+                    $scope.l_categories[j].category_color = "#E0E0E0";
+                } else {
+                    $scope.l_categories[j].category_color = "#FAFAFA";
+                }
+            }
+            
             for (var i in dt_items) {
-                if (cate_name === dt_items[i].category_name) {
+                if (cate_id === dt_items[i].cate_mask) {
                     if (dt_items[i].status === 1) {
                         $scope.l_pro.push(dt_items[i]);
                     }
@@ -166,8 +169,6 @@
                                     }
                                 }
                             }
-                        } else if (response.err === 101) {      // has not logged in
-                            $location.path('/login');
                         } else {
                             console.log("error getListProduct");
                         }

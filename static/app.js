@@ -30,10 +30,6 @@ theApp.constant('HTTP_TRANSPRO', HTTP_TRANSPRO);
                     controller: 'BillController',
                     templateUrl: 'bill/bill.view.html?v=' + posConfig.TEMPLATE_BILL_VERSION
                 })
-                .when('/login/', {
-                    controller: 'LoginController',
-                    templateUrl: 'login/login.view.html?v=' + posConfig.TEMPLATE_LOGIN_VERSION
-                })
                 .otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
