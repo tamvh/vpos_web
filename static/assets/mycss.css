@@ -98,6 +98,7 @@ and open the template in the editor.
     bottom: 0;
     height: 90px;
     width: 100%;
+    z-index: 1000;
 }
 .myheader {
     position: fixed;

@@ -16,10 +16,12 @@
         $scope.totalmoney = 0;
         $scope.tablenumber = "#";
         $scope.tablelocation = "#";
+        $scope.dwidth = 0;
         var foodItems = [];
         var dt_items = [];
         var img_host = "";
         var find_btn_area = false;
+        
         function get_params() {
             var cur_url = window.location.href;
             if (cur_url.split('?').length === 2) {
@@ -94,12 +96,11 @@
         $scope.getListProduct = function () {
             initJsBrige();
             get_params();
+            $scope.dwidth = $(window).width();
             ProductService.getListProduct()
                     .then(function (response) {
                         if (response.err === 0) {
-
                             img_host = response.dt.img_host;
-
                             for (var i in response.dt.categories) {
                                 if (response.dt.categories[i].status === 0 &&
                                         response.dt.categories[i].category_name === 'Tất cả') {
@@ -124,16 +125,12 @@
                             if (arr_food.length > 0) {
                                 for (var i in dt_items) {
                                     if (dt_items[i].status === 1) {
-                                        if (dt_items[i].item_name.length > 25) {
-                                            dt_items[i].name_view = dt_items[i].item_name.toString().substr(0, 24) + "...";
-                                        } else {
-                                            dt_items[i].name_view = dt_items[i].item_name;
-                                        }
-
+                                        dt_items[i].name_view = dt_items[i].item_name;    
                                         dt_items[i].img_path = img_host + dt_items[i].img_path;
                                         dt_items[i].img_checked = "img/checked.png";
 
                                         dt_items[i].img = dt_items[i].img_path;
+                                        
                                         dt_items[i].quantity = "";
                                         dt_items[i].icon_minus = "";
                                         dt_items[i].icon_plus = "";
@@ -144,6 +141,7 @@
                                                 dt_items[i].quantity = arr_food[j].quantity;
                                                 dt_items[i].icon_minus = "-";
                                                 dt_items[i].icon_plus = "+";
+                                                dt_items[i].showaction = true;
                                                 dt_items[i].bgcolor = "#E0E0E0";
                                                 break;
                                             }
@@ -156,16 +154,12 @@
                                 for (var i in dt_items) {
                                     if (dt_items[i].status === 1) {
                                         dt_items[i].bgcolor = "white";
-                                        if (dt_items[i].item_name.length > 25) {
-                                            dt_items[i].name_view = dt_items[i].item_name.toString().substr(0, 24) + "...";
-                                        } else {
-                                            dt_items[i].name_view = dt_items[i].item_name;
-                                        }
-
+                                        dt_items[i].name_view = dt_items[i].item_name;
                                         dt_items[i].quantity = "";
                                         dt_items[i].icon_minus = "";
                                         dt_items[i].icon_plus = "";
                                         dt_items[i].img_path = img_host + dt_items[i].img_path;
+                                        dt_items[i].showaction = false;
                                         dt_items[i].img_checked = "img/checked.png";
                                         dt_items[i].img = dt_items[i].img_path;
                                         $scope.l_pro.push(dt_items[i]);
@@ -175,6 +169,7 @@
                         } else {
                             console.log("error getListProduct");
                         }
+                        console.log(JSON.stringify(dt_items));
                     });
             $scope.gettotal_money();
         };
@@ -204,12 +199,14 @@
                     $scope.l_pro[i].quantity = item_quantity;
                     $scope.l_pro[i].icon_minus = "-";
                     $scope.l_pro[i].icon_plus = "+";
+                    $scope.l_pro[i].showaction = true;
                     setItem($scope.l_pro[i]);
                     var _item = {
                         index: item.item_id,
                         item_name: item.item_name,
                         quantity: item_quantity,
                         price: item.price,
+                        showaction: true,
                         amount: item_amount,
                         original_price: 0.0,
                         promotion_type: 0.0,
@@ -247,6 +244,7 @@
                             $scope.l_pro[j].bgcolor = "white";
                             $scope.l_pro[j].img = $scope.l_pro[j].img_path;
                             $scope.l_pro[j].quantity = "";
+                            $scope.l_pro[j].showaction = false;
                             $scope.l_pro[j].icon_minus = "";
                             $scope.l_pro[j].icon_plus = "";
                             break;
@@ -367,6 +365,7 @@
                                     item_name: item.item_name,
                                     quantity: $scope.l_pro[j].quantity,
                                     price: item.price,
+                                    showaction: true,
                                     amount: $scope.l_pro[j].quantity * item.price,
                                     original_price: 0.0,
                                     promotion_type: 0.0,
