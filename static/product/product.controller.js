@@ -36,7 +36,17 @@
         $scope.getProdInCategory = function (cate) {
             $scope.l_pro.splice(0, $scope.l_pro.length);
             var cate_name = cate.category_name;
+            var cate_value = cate.category_value;
             var cate_id = cate.category_id;
+            console.log('cate list: ' + JSON.stringify($scope.l_categories));
+            for (var j in $scope.l_categories) {
+                console.log('cate_id: ' + $scope.l_categories[j].category_id);
+                if (cate_id === $scope.l_categories[j].category_id) {
+                    $scope.l_categories[j].category_color = "#E0E0E0";
+                } else {
+                    $scope.l_categories[j].category_color = "#FAFAFA";
+                }
+            }
             if (cate_name === "Tất cả") {
                 for (var i in dt_items) {
                     if (dt_items[i].status === 1) {
@@ -46,16 +56,9 @@
                 document.getElementById("mySidenav").style.width = "0";
                 return;
             }
-            for (var j in $scope.l_categories) {
-                if (cate_id === $scope.l_categories[j].category_id) {
-                    $scope.l_categories[j].category_color = "#E0E0E0";
-                } else {
-                    $scope.l_categories[j].category_color = "#FAFAFA";
-                }
-            }
             
             for (var i in dt_items) {
-                if (cate_id === dt_items[i].cate_mask) {
+                if (cate_value === dt_items[i].cate_mask) {
                     if (dt_items[i].status === 1) {
                         $scope.l_pro.push(dt_items[i]);
                     }
