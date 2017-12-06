@@ -82,6 +82,7 @@
             BillService.doGetPmsid(uuid, billId).then(function (response) {
                 if (response.err === 0) {
                     var sid = response.dt.invoice_session;
+                    alert(sid);
                     var billid = response.dt.food_order;
                     BillService.doPayZalo(gen_uuid(), sid, billid, $scope.total_money, $scope.l_product).then(function (res) {
                         ZaloPay.hideLoading();
@@ -89,12 +90,12 @@
                         if (res.err === 0) {
                             var zptranstoken = res.dt.zptranstoken;
                             var appid = res.dt.appid;
-                            if (sid === res.dt.invoice_session) {
+//                            if (sid === res.dt.invoice_session) {
                                 ZaloPay.payOrder({
                                     appid: appid,
                                     zptranstoken: zptranstoken
                                 }, cb);
-                            }
+//                            }
                         }
                     });
                 }
