@@ -317,6 +317,7 @@
                                     $scope.l_pro[j].quantity = "";
                                     $scope.l_pro[j].bgcolor = "white";
                                     $scope.l_pro[j].img = $scope.l_pro[j].img_path;
+                                    $scope.l_pro[j].showaction = false;
                                     $scope.l_pro[j].icon_minus = "";
                                     $scope.l_pro[j].icon_plus = "";
                                     $scope.gettotal_money();
@@ -330,6 +331,7 @@
                                     item_name: item.item_name,
                                     quantity: $scope.l_pro[j].quantity,
                                     price: item.price,
+                                    showaction: false,
                                     amount: $scope.l_pro[j].quantity * item.price,
                                     original_price: 0.0,
                                     promotion_type: 0.0,
