@@ -1,48 +1,48 @@
 <div class = "mytopweb">
-    <div style="
-         display: flex;
-         width: 10%;
-         height: 40px;
-         float: left;">
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" style="width: 100%;height: 40px;background-color: #2196F3; color: white;font-size: 15px;" onclick="closeNav()">&#9776; DANH MỤC SẢN PHẨM</a>           
-            <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
-            <div ng-repeat="category in l_categories">
-                <div ng-click="getProdInCategory(category)">
-                    <a href="javascript:void(0)" style="text-transform:uppercase; background-color: {{category.category_color}}">&raquo; {{category.category_name}}</a>
-                </div>
-                <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
-            </div>
-        </div>
-        <div class="center" onclick="openNav()">
-            &#9776;
-        </div>
-
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "270px";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-        </script>
-    </div>
-    <div style="
-         width: 90%;
-         height: 40px;
-         float: right;">
-        <form id="search">
-            <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
-        </form>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="height: 40px; width: 40px;">
+                    <div id="mySidenav" class="sidenav" ng-click="closeNav()">
+                        <a href="javascript:void(0)" class="closebtn" style="width: 100%;height: 40px;background-color: #2196F3; color: white;font-size: 15px;">DANH MỤC SẢN PHẨM</a>           
+                        <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
+                        <div ng-repeat="category in l_categories">
+                            <div ng-click="getProdInCategory(category)">
+                                <a href="javascript:void(0)" style="text-transform:uppercase; background-color: {{category.category_color}}">&raquo; {{category.category_name}}</a>
+                            </div>
+                            <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
+                        </div>
+                    </div>
+                    <img src="img/menu.png" alt="img" height="30" width="24" style="margin-left: 8px; margin-top: 5px;" ng-click="openNav()"/>
+                    
+                </th>
+                <th>
+                    <form id="search">
+                        <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
+                    </form>
+                </th>
+            </tr>
+        </thead>
+    </table>
 </div>
 <div class="row" style="margin-bottom: 90px; margin-top: 39px; margin-left: 0px; margin-right: 0px;width: 100%;">  
     <div style="overflow-y: scroll; height: 100%;" >
         <div ng-repeat = "item in l_pro| filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
             <div class="col-md-2 col-sm-2 col-xs-2" ng-click="deleteItem(item)">
                 <div class ="top_image">
-                    <img src="{{item.img}}" alt="{{item.item_name}}">
+                    <img style="border-radius:50%;
+                         -moz-border-radius:50%;
+                         -webkit-border-radius:50%;
+                         max-height: 100%;  
+                         max-width: 100%; 
+                         width: 45px;
+                         height: 45px;
+                         position: absolute;  
+                         top: 0;  
+                         bottom: 0;  
+                         left: 0;  
+                         right: 0;  
+                         margin: auto;" src="{{item.img}}" alt="img">
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3" ng-click="selectItem(item)">
@@ -54,15 +54,15 @@
                 </div>
             </div>
             <div class="col-md-7 col-sm-7 col-xs-7" ng-click="change(item)">
-                <div style="display: inline-flex;float: right; " ng-show="item.showaction">
+                <div style="display: inline-flex;float: right; background-color: {{item.bgcolor}};" ng-show="item.showaction">
                     <div class = "press_btn">
-                        <input ng-click="change_quantity('-', item)" type="button" value="{{item.icon_minus}}" style="margin-top: 3px;width: 49px;height: 49px;border-style: solid;border-width: 0px;border-radius: 25px; text-align: center;background-color:white;" >
+                        <input ng-click="change_quantity('-', item)" type="button" value="{{item.icon_minus}}" style="margin-top: 3px;width: 49px;height: 49px;border-style: solid;border-width: 0px;border-radius: 25px; text-align: center;background-color:white;font-size: 18px;" >
                     </div>
-                    <div style="width: 35px; padding: 0px; margin: 0px; margin-right: 3px;">
-                        <input ng-click="change_quantity('num', item)" type="button" ng-value ="item.quantity" style="margin-top: 3px;width: 35px;height: 49px;border-style: solid;border-width: 0px;border-radius: 6px; text-align: center;background-color:white;" >
+                    <div style="width: 40px; padding: 0px; margin: 0px; margin-right: 3px;">
+                        <input ng-click="change_quantity('num', item)" type="button" ng-value ="item.quantity" style="margin-top: 3px;width: 40px;height: 49px;border-style: solid;border-width: 0px;border-radius: 6px; text-align: center;background-color:white;font-size: 18px;" >
                     </div>
                     <div style="width: 49px; padding: 0px; margin: 0px;">
-                        <input ng-click="change_quantity('+', item)" type="button" value="{{item.icon_plus}}" style="margin-top: 3px;width: 49px;height: 49px;border-style: solid;border-width: 0px;border-radius: 25px; text-align: center;background-color:white;" >
+                        <input ng-click="change_quantity('+', item)" type="button" value="{{item.icon_plus}}" style="margin-top: 3px;width: 49px;height: 49px;border-style: solid;border-width: 0px;border-radius: 25px; text-align: center;background-color:white;font-size: 18px;" >
                     </div>
                 </div>
             </div>

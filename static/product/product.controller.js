@@ -1,4 +1,4 @@
-/* global theApp, ZaloPay */
+/* global theApp, ZaloPay, global_click_menu */
 
 (function () {
     'use strict';
@@ -21,7 +21,7 @@
         var dt_items = [];
         var img_host = "";
         var find_btn_area = false;
-        
+        var global_click_menu = false;
         function get_params() {
             var cur_url = window.location.href;
             if (cur_url.split('?').length === 2) {
@@ -94,7 +94,7 @@
         };
 
         $scope.getListProduct = function () {
-            initJsBrige();
+            //initJsBrige();
             get_params();
             $scope.dwidth = $(window).width();
             ProductService.getListProduct()
@@ -126,7 +126,12 @@
                                 for (var i in dt_items) {
                                     if (dt_items[i].status === 1) {
                                         dt_items[i].name_view = dt_items[i].item_name;    
-                                        dt_items[i].img_path = img_host + dt_items[i].img_path;
+                                        if(checkExistImgUrl(dt_items[i].img_path)) {
+                                            dt_items[i].img_path = img_host + dt_items[i].img_path;
+                                        } else {
+                                            dt_items[i].img_path = "img/noimg.jpg";
+                                        }
+                                        
                                         dt_items[i].img_checked = "img/checked.png";
 
                                         dt_items[i].img = dt_items[i].img_path;
@@ -158,7 +163,11 @@
                                         dt_items[i].quantity = "";
                                         dt_items[i].icon_minus = "";
                                         dt_items[i].icon_plus = "";
-                                        dt_items[i].img_path = img_host + dt_items[i].img_path;
+                                        if(checkExistImgUrl(dt_items[i].img_path)) {
+                                            dt_items[i].img_path = img_host + dt_items[i].img_path;
+                                        } else {
+                                            dt_items[i].img_path = "img/noimg.jpg";
+                                        }
                                         dt_items[i].showaction = false;
                                         dt_items[i].img_checked = "img/checked.png";
                                         dt_items[i].img = dt_items[i].img_path;
@@ -173,7 +182,27 @@
                     });
             $scope.gettotal_money();
         };
+        
+        function checkExistImgUrl(img_url) {
+            var local_img_url = img_url;
+            if(local_img_url.search(".jpg")>=0 || local_img_url.search(".png")>=0 || local_img_url.search(".jepg")>=0) {
+                return true;
+            }
+            return false;
+        }
+        
         $scope.getListProduct();
+        
+        $scope.openNav = function() {
+            global_click_menu = true;
+            document.getElementById("mySidenav").style.width = "270px";
+        };
+
+        $scope.closeNav = function() {
+            global_click_menu = false;
+            document.getElementById("mySidenav").style.width = "0";
+        };
+        
         function setItem(item) {
             for (var i in dt_items) {
                 if (dt_items[i].item_id === item.item_id) {
@@ -185,6 +214,12 @@
         }
         $scope.selectItem = function (item) {
             console.log("===select item===");
+            console.log('global_click_menu: ' + global_click_menu);
+            if(global_click_menu) {
+                document.getElementById("mySidenav").style.width = "0";
+                global_click_menu = false;
+                return;
+            }
             find_btn_area = true;
             for (var i in $scope.l_pro) {
                 if ($scope.l_pro[i].item_id === item.item_id) {
@@ -264,7 +299,13 @@
         };
 
         $scope.change = function(item) {
-            console.log('select area');
+            console.log('select area, item: ' + JSON.stringify(item));
+            console.log('global_click_menu: ' + global_click_menu);
+            if(global_click_menu) {
+                global_click_menu = false;
+                document.getElementById("mySidenav").style.width = "0";
+                return;
+            }
             if(find_btn_area) {
                 return;
             }

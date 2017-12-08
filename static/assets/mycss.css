@@ -16,13 +16,13 @@ and open the template in the editor.
 }
 
 .center {
-    width: 80%;
-    height: 80%;
+/*    width: 80%;
+    height: 80%;*/
+    margin-left: 10px;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    margin: auto;
-    font-size:25px;
+    font-size:24px;
     cursor:pointer;
     color:white;
 }
@@ -124,7 +124,7 @@ and open the template in the editor.
     margin: auto;
     background-color: graytext;
 }
-
+/*
 img {
     border-radius:50%;
     -moz-border-radius:50%;
@@ -139,7 +139,7 @@ img {
     left: 0;  
     right: 0;  
     margin: auto;
-}
+}*/
 .top_image {
     height: 55px; /*can be anything*/
     width: 55px; /*can be anything*/
@@ -161,7 +161,7 @@ img {
     border: 1px solid #d1d1d1;
     font: normal 12px Arial,Helvetica,Sans-serif;
     color: #bebebe;
-    width: 95%;
+    width: 99%;
     height: 30px;
     padding: 6px 15px 6px 35px;
     -webkit-border-radius: 20px;

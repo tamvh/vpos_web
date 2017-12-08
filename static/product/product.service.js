@@ -6,7 +6,7 @@
     ProductService.$inject = ['$http', 'API_URL', 'ZALOPAY_URL', 'MERCHANT_CODE'];
     function ProductService($http, API_URL, ZALOPAY_URL, MERCHANT_CODE) {
         var service = {};
-        var url = API_URL; 
+        var url = API_URL + "/item/"; 
         var url_zalopay = ZALOPAY_URL; 
         var mc = MERCHANT_CODE;
         

@@ -3,13 +3,12 @@
     'use strict';
     theApp.factory('BillService', BillService);
 
-    BillService.$inject = ['$rootScope', '$http', '$q', 'API_URL', 'ZALOPAY_URL', 'MERCHANT_CODE', 'HTTP_TRANSPRO'];
-    function BillService($rootScope, $http, $q, API_URL, ZALOPAY_URL, MERCHANT_CODE, HTTP_TRANSPRO) {
+    BillService.$inject = ['$rootScope', '$http', '$q', 'API_URL', 'ZALOPAY_URL', 'MERCHANT_CODE'];
+    function BillService($rootScope, $http, $q, API_URL, ZALOPAY_URL, MERCHANT_CODE) {
         var service = {};
-        var url = API_URL;
+        var url = API_URL + "/invoice/";
         var url_zalopay = ZALOPAY_URL;
         var merchant_code = MERCHANT_CODE;
-        var http_tranpro = HTTP_TRANSPRO;
         var p_method = 1; // zalopay
         var appTitle = "TABLE: " + $rootScope.globals.table_number + " - " + $rootScope.globals.table_location;
         var machine_name = "W-VPOS";
@@ -30,7 +29,9 @@
                 description: appTitle,
                 appuser: merchant_code,
                 amount: amount,
-                devid: 'ffffffffffffffffffffffffffffffff',
+                //devid: 'ffffffffffffffffffffffffffffffff',
+                devid: uuid,
+                apptype: 7,
                 items: items,
                 payment_method: p_method
             };
@@ -43,7 +44,7 @@
                 sid: sesId,
                 dt: dt
             });
-            return $http.post(http_tranpro, data).then(handleSuccess, handleError('Error doPayZalo'));
+            return $http.post(url, data).then(handleSuccess, handleError('Error doPayZalo'));
         }
         
         function doGetPmsid(deviceId, billId) {
@@ -58,7 +59,7 @@
                 cm: cmd,
                 dt: dt
             });
-            return $http.post(http_tranpro, data).then(handleSuccess, handleError('Error get session'));
+            return $http.post(url, data).then(handleSuccess, handleError('Error get session'));
         }
 
         function getListProduct() {

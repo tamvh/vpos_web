@@ -1,14 +1,11 @@
-/* global posConfig, API_URL, UPLOAD_URL, RESOURCE_URL, ZALOPAY_URL, MERCHANT_CODE, URL, HTTP_TRANSPRO */
+/* global posConfig, API_URL, UPLOAD_URL, ZALOPAY_URL, MERCHANT_CODE, URL, HTTP_TRANSPRO */
 
 var theApp = angular.module('theApp', ['ngRoute', 'ngCookies', 'smart-table', 'ui.bootstrap', 'ngFileUpload', 'angular-confirm', 'ngMaterial', 'bootstrapLightbox', 'angularjs-dropdown-multiselect']);
 
 theApp.constant('API_URL', API_URL); //define CONST API_URL
 theApp.constant('ZALOPAY_URL', ZALOPAY_URL); //define CONST API_URL
 theApp.constant('UPLOAD_URL', UPLOAD_URL); //define CONST API_URL
-theApp.constant('RESOURCE_URL', RESOURCE_URL);
 theApp.constant('MERCHANT_CODE', MERCHANT_CODE);
-theApp.constant('URL', URL);
-theApp.constant('HTTP_TRANSPRO', HTTP_TRANSPRO);
 
 (function () {
     'use strict';
