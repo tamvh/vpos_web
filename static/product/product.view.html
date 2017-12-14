@@ -128,9 +128,9 @@
             <div style="height: 37px; 
                  width: 60%;
                  font-family: Arial, sans-serif;
-                 font-size: 12px;
+                 font-size: 13px;
                  letter-spacing: 0;
-                 padding-top: 9px;
+                 padding-top: 8px;
                  float: right;
                  text-align: right;">
                 <label style="color: #2D6489;">TỔNG TIỀN:</label> <label style="color:#00A2E6;">{{totalmoney| currency:"":0 }} VNĐ</label>
@@ -149,7 +149,13 @@
 <script type="text/ng-template" id="PopupAddItem.html">
     <form name="addItemForm">
         <div style = "margin-bottom:10px;text-align: center;">
-            <img src="{{img_path}}" alt = "img"/>
+            <div style = "height: 200px; width:100%;background-image: url('{{img_path}}');
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;">
+                
+            </div>
+            <!--<img src="{{img_path}}" alt = "img" width="100%"/>-->
             <div style= "text-align: center;color:#2D6489;font-size: 14px;padding-top:15px;">
                 <b>{{item_name}}</b>
             </div>
@@ -161,15 +167,15 @@
             </div>
             <div class="row" style= "text-align: center; padding: 5px;">
                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <button class="btn btn-primary" type="submit" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:40px;height:40px;" ng-click="minus()">-</button>
-                    <button class="btn btn-warning" type="button" style="background: white;border: 0px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:40px;height:40px;">{{quantity}}</button>
-                    <button class="btn btn-warning" type="button" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:40px;height:40px;" ng-click="plus()">+</button>
+                    <button class="btn btn-primary" type="submit" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;" ng-click="minus()">-</button>
+                    <button class="btn btn-warning" type="button" style="background: white;border: 0px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;font-size:18px;"><b>{{quantity}}</b></button>
+                    <button class="btn btn-warning" type="button" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;" ng-click="plus()">+</button>
                 </div>
             </div>
             <div class="row" style= "text-align: center; padding: 5px;">
                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <button class="btn btn-primary" type="submit" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:90px;" ng-click="ok()">Tiếp tục</button>
-                    <button class="btn btn-warning" type="button" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:90px;" ng-click="bill()" ng-disabled="disable_thanhtoan">Thanh toán</button>
+                    <button class="btn btn-primary" type="submit" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:100px;height:50px;" ng-click="ok()"><b>Tiếp tục</b></button>
+                    <button class="btn btn-warning" type="button" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:100px;height:50px;" ng-click="bill()" ng-disabled="disable_thanhtoan"><b>Thanh toán</b></button>
                 </div>
             </div>
         </div>
