@@ -16,8 +16,6 @@ and open the template in the editor.
 }
 
 .center {
-/*    width: 80%;
-    height: 80%;*/
     margin-left: 10px;
     display: table-cell;
     text-align: center;
@@ -31,13 +29,14 @@ and open the template in the editor.
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 1001;
     top: 0;
     left: 0;
-    background-color: #FAFAFA;
+    background-color: #FFFFFF;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 40px;
+    padding-top: 15px;
+    
 }
 
 .sidenav a {
@@ -64,8 +63,8 @@ and open the template in the editor.
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
 }
 
 .mymenu {
@@ -75,31 +74,98 @@ and open the template in the editor.
 }
 .mytopweb {
     position: fixed;
+    height: 76px;
     top: 0;
-    height: 40px;
     width: 100%;
-    background-color: #0973b9; 
+    background-color: #00A2E6; 
     z-index:1000;
 }
 
 .mysearch {
     position: fixed;
     top: 0;
-    height: 40px;
+    height: 30px;
     width: 100%;
     background-color: #0973b9; 
     text-align: center;
     vertical-align: middle;
     z-index:1000;
 }
+.line {
+    width: 100%; 
+    height: 1px;
+    background-color: #EEEEEE;
+}
+
+.btntamtinh {
+    height: 44px; 
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #00A2E6;
+    background-color: #E4F5FB;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding-top: 9px;
+    color: #00A2E6;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+.btnthanhtoan {
+    height: 44px; 
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #00A2E6;
+    background-color: #E4F5FB;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding-top: 9px;
+    color: #00A2E6;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btnnote {
+    height: 40px; 
+    width: 70px;
+    border-radius: 4px;
+    border: 1px solid #00A2E6;
+    background-color: #E4F5FB;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #00A2E6;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+}
 
 .myfooter {
     position: fixed;
     bottom: 0;
-    height: 90px;
-    width: 100%;
+    left: 0;
+    right: 0;
+    height: 99px;
+    background: #FFFFFF;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.11);
     z-index: 1000;
 }
+
+.header {
+    position: fixed;
+    top: 0;
+    height: 38px;
+    width: 100%;
+    background: #00A2E6;
+}
+
 .myheader {
     position: fixed;
     top: 0;
@@ -124,22 +190,6 @@ and open the template in the editor.
     margin: auto;
     background-color: graytext;
 }
-/*
-img {
-    border-radius:50%;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    max-height: 100%;  
-    max-width: 100%; 
-    width: 45px;
-    height: 45px;
-    position: absolute;  
-    top: 0;  
-    bottom: 0;  
-    left: 0;  
-    right: 0;  
-    margin: auto;
-}*/
 .top_image {
     height: 55px; /*can be anything*/
     width: 55px; /*can be anything*/
@@ -148,8 +198,9 @@ img {
 .btn_bill {
     position: fixed;
     bottom: 0;
-    height: 50px;
+    height: 55px;
     width: 100%;
+    background-color: white;
 }
 
 #search {
@@ -158,7 +209,7 @@ img {
 
 #search input[type="text"] {
     background: url(../img/search.png) no-repeat 10px 6px #fcfcfc;
-    border: 1px solid #d1d1d1;
+    border: 0px solid #fcfcfc;
     font: normal 12px Arial,Helvetica,Sans-serif;
     color: #bebebe;
     width: 99%;
@@ -178,5 +229,5 @@ img {
 }
 
 #search input[type="text"]:focus {
-    
+
 }

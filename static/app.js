@@ -36,7 +36,11 @@ theApp.constant('MERCHANT_CODE', MERCHANT_CODE);
     run.$inject = ['$rootScope', '$cookies', '$location', '$window'];
     function run($rootScope, $cookies, $location, $window) {
         $rootScope.globals = {currentUser: {}};
-      
+        $rootScope.listProduct = [];
+        $rootScope.l_pro = [];
+        $rootScope.l_categories = [];
+        $rootScope.foodItems = [];
+        $rootScope.totalmoney = 0;
         if (localStorage.newtabInfo) {
             var newtabInfo = JSON.parse(localStorage.newtabInfo);
             $cookies.put('u', newtabInfo.u);

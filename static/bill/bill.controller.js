@@ -72,7 +72,7 @@
         };
         
         $scope.cancel = function() {
-            //$uibModalInstance.close(); 
+            
         };
         
         $scope.pay = function () {
@@ -82,11 +82,9 @@
             BillService.doGetPmsid(uuid, billId).then(function (response) {
                 if (response.err === 0) {
                     var sid = response.dt.invoice_session;
-                    alert(sid);
                     var billid = response.dt.food_order;
                     BillService.doPayZalo(gen_uuid(), sid, billid, $scope.total_money, $scope.l_product).then(function (res) {
                         ZaloPay.hideLoading();
-                        alert(JSON.stringify(res));
                         if (res.err === 0) {
                             var zptranstoken = res.dt.zptranstoken;
                             var appid = res.dt.appid;

@@ -29,7 +29,6 @@
                 description: appTitle,
                 appuser: merchant_code,
                 amount: amount,
-                //devid: 'ffffffffffffffffffffffffffffffff',
                 devid: uuid,
                 apptype: 7,
                 items: items,

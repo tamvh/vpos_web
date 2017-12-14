@@ -1,26 +1,22 @@
-/* global theApp, ZaloPay, global_click_menu */
+/* global theApp, ZaloPay, global_click_menu, $uibModal */
 
 (function () {
     'use strict';
 
     theApp.controller('ProductController', ProductController);
 
-    ProductController.$inject = ['$scope', 'ProductService', '$rootScope', '$cookies', '$location', 'PopupService'];
-    function ProductController($scope, ProductService, $rootScope, $cookies, $location, PopupService) {
-        $scope.listProduct = [];
+    ProductController.$inject = ['$scope', 'ProductService', '$rootScope', '$cookies', '$location', 'PopupService', '$uibModal'];
+    function ProductController($scope, ProductService, $rootScope, $cookies, $location, PopupService, $uibModal) {
         $scope.order = {};
         $scope.zptranstoken = "";
         $scope.appid = 0;
-        $scope.l_pro = [];
-        $scope.l_categories = [];
-        $scope.totalmoney = 0;
         $scope.tablenumber = "#";
         $scope.tablelocation = "#";
         $scope.dwidth = 0;
-        var foodItems = [];
+        $scope.current_category = "Tất cả";
+        $scope.total_item_in_category = 0;
         var dt_items = [];
         var img_host = "";
-        var find_btn_area = false;
         var global_click_menu = false;
         function get_params() {
             var cur_url = window.location.href;
@@ -36,25 +32,30 @@
         }
 
         $scope.getProdInCategory = function (cate) {
-            $scope.l_pro.splice(0, $scope.l_pro.length);
+            var count_item_in_cate = 0;
+            $rootScope.l_pro.splice(0, $rootScope.l_pro.length);
             var cate_name = cate.category_name;
             var cate_value = cate.category_value;
             var cate_id = cate.category_id;
-            console.log('cate list: ' + JSON.stringify($scope.l_categories));
-            for (var j in $scope.l_categories) {
-                console.log('cate_id: ' + $scope.l_categories[j].category_id);
-                if (cate_id === $scope.l_categories[j].category_id) {
-                    $scope.l_categories[j].category_color = "#E0E0E0";
+            console.log('cate list: ' + JSON.stringify($rootScope.l_categories));
+            for (var j in $rootScope.l_categories) {
+                console.log('cate_id: ' + $rootScope.l_categories[j].category_id);
+                if (cate_id === $rootScope.l_categories[j].category_id) {
+                    $rootScope.l_categories[j].category_color = "#00A2E6";
+                    $scope.current_category = $rootScope.l_categories[j].category_name;
                 } else {
-                    $scope.l_categories[j].category_color = "#FAFAFA";
+                    $rootScope.l_categories[j].category_color = "#000000";
                 }
             }
             if (cate_name === "Tất cả") {
+                
                 for (var i in dt_items) {
                     if (dt_items[i].status === 1) {
-                        $scope.l_pro.push(dt_items[i]);
+                        count_item_in_cate = count_item_in_cate + 1;
+                        $rootScope.l_pro.push(dt_items[i]);
                     }
                 }
+                $scope.total_item_in_category = count_item_in_cate;
                 document.getElementById("mySidenav").style.width = "0";
                 return;
             }
@@ -62,11 +63,13 @@
             for (var i in dt_items) {
                 if (cate_value === dt_items[i].cate_mask) {
                     if (dt_items[i].status === 1) {
-                        $scope.l_pro.push(dt_items[i]);
+                        count_item_in_cate = count_item_in_cate + 1;
+                        $rootScope.l_pro.push(dt_items[i]);
                     }
                 }
             }
             document.getElementById("mySidenav").style.width = "0";
+            $scope.total_item_in_category = count_item_in_cate;
         };
 
         $scope.gettotal_money = function() {
@@ -80,21 +83,21 @@
             var arr_food = [];
             if (foods + '' !== '' && foods + '' !== 'undefined') {
                 arr_food = JSON.parse(foods);
-                foodItems = arr_food;
+                $rootScope.foodItems = arr_food;
             }
            
-            for (var j in foodItems) {
-                _soluong = foodItems[j].quantity;
-                _price = foodItems[j].price;
+            for (var j in $rootScope.foodItems) {
+                _soluong = $rootScope.foodItems[j].quantity;
+                _price = $rootScope.foodItems[j].price;
                 _amount = _price * _soluong;
                 _total_amout = _total_amout + _amount;
             }
-            $scope.totalmoney = _total_amout;
-            $cookies.put("totalmoney", $scope.totalmoney);
+            $rootScope.totalmoney = _total_amout;
+            $cookies.put("totalmoney", $rootScope.totalmoney);
         };
 
         $scope.getListProduct = function () {
-            //initJsBrige();
+            initJsBrige();
             get_params();
             $scope.dwidth = $(window).width();
             ProductService.getListProduct()
@@ -104,12 +107,14 @@
                             for (var i in response.dt.categories) {
                                 if (response.dt.categories[i].status === 0 &&
                                         response.dt.categories[i].category_name === 'Tất cả') {
-                                    response.dt.categories[i].category_color = "#E0E0E0";
-                                    $scope.l_categories.push(response.dt.categories[i]);
+                                    response.dt.categories[i].category_color = "#00A2E6";
+                                    response.dt.categories[i].icon = "img/item_all.svg";
+                                    $rootScope.l_categories.push(response.dt.categories[i]);
                                 }
                                 if (response.dt.categories[i].status === 1) {
-                                    response.dt.categories[i].category_color = "#FAFAFA";
-                                    $scope.l_categories.push(response.dt.categories[i]);
+                                    response.dt.categories[i].category_color = "#000000";
+                                    response.dt.categories[i].icon = "img/menu_item.svg";
+                                    $rootScope.l_categories.push(response.dt.categories[i]);
                                 }
 
                             }
@@ -119,8 +124,7 @@
                             var arr_food = [];
                             if (foods + '' !== '' && foods + '' !== 'undefined') {
                                 arr_food = JSON.parse(foods);
-                                foodItems = arr_food;
-                                find_btn_area = true;  
+                                $rootScope.foodItems = arr_food;
                             }
                             if (arr_food.length > 0) {
                                 for (var i in dt_items) {
@@ -129,29 +133,31 @@
                                         if(checkExistImgUrl(dt_items[i].img_path)) {
                                             dt_items[i].img_path = img_host + dt_items[i].img_path;
                                         } else {
-                                            dt_items[i].img_path = "img/noimg.jpg";
+                                            dt_items[i].img_path = "img/noimg.png";
                                         }
                                         
                                         dt_items[i].img_checked = "img/checked.png";
 
                                         dt_items[i].img = dt_items[i].img_path;
                                         
-                                        dt_items[i].quantity = "";
-                                        dt_items[i].icon_minus = "";
-                                        dt_items[i].icon_plus = "";
+                                        dt_items[i].quantity = 0;
+                                        dt_items[i].show_quantity = false;
                                         dt_items[i].bgcolor = "white";
                                         for (var j in arr_food) {
                                             if (arr_food[j].index === dt_items[i].item_id) {
                                                 dt_items[i].img = "img/checked.png";
                                                 dt_items[i].quantity = arr_food[j].quantity;
-                                                dt_items[i].icon_minus = "-";
-                                                dt_items[i].icon_plus = "+";
+                                                if(dt_items[i].quantity > 0) {
+                                                    dt_items[i].show_quantity = true;
+                                                } else {
+                                                    dt_items[i].show_quantity = false;
+                                                }
                                                 dt_items[i].showaction = true;
                                                 dt_items[i].bgcolor = "#E0E0E0";
                                                 break;
                                             }
                                         }
-                                        $scope.l_pro.push(dt_items[i]);
+                                        $rootScope.l_pro.push(dt_items[i]);
                                     }
 
                                 }
@@ -160,24 +166,29 @@
                                     if (dt_items[i].status === 1) {
                                         dt_items[i].bgcolor = "white";
                                         dt_items[i].name_view = dt_items[i].item_name;
-                                        dt_items[i].quantity = "";
-                                        dt_items[i].icon_minus = "";
-                                        dt_items[i].icon_plus = "";
+                                        dt_items[i].quantity = 0;
                                         if(checkExistImgUrl(dt_items[i].img_path)) {
                                             dt_items[i].img_path = img_host + dt_items[i].img_path;
                                         } else {
-                                            dt_items[i].img_path = "img/noimg.jpg";
+                                            dt_items[i].img_path = "img/noimg.png";
                                         }
                                         dt_items[i].showaction = false;
                                         dt_items[i].img_checked = "img/checked.png";
                                         dt_items[i].img = dt_items[i].img_path;
-                                        $scope.l_pro.push(dt_items[i]);
+                                        if(dt_items[i].quantity > 0) {
+                                            dt_items[i].show_quantity = true;
+                                        } else {
+                                            dt_items[i].show_quantity = false;
+                                        }
+                                        $rootScope.l_pro.push(dt_items[i]);
                                     }
                                 }
                             }
+                            
                         } else {
                             console.log("error getListProduct");
                         }
+                        $scope.total_item_in_category = dt_items.length;
                         console.log(JSON.stringify(dt_items));
                     });
             $scope.gettotal_money();
@@ -194,250 +205,60 @@
         $scope.getListProduct();
         
         $scope.openNav = function() {
+            
             global_click_menu = true;
-            document.getElementById("mySidenav").style.width = "270px";
+            document.getElementById("mySidenav").style.width = "200px";
         };
 
         $scope.closeNav = function() {
             global_click_menu = false;
             document.getElementById("mySidenav").style.width = "0";
         };
-        
-        function setItem(item) {
-            for (var i in dt_items) {
-                if (dt_items[i].item_id === item.item_id) {
-                    console.log(JSON.stringify(item));
-                    dt_items[i] = item;
-                    break;
-                }
-            }
-        }
-        $scope.selectItem = function (item) {
-            console.log("===select item===");
-            console.log('global_click_menu: ' + global_click_menu);
-            if(global_click_menu) {
-                document.getElementById("mySidenav").style.width = "0";
-                global_click_menu = false;
-                return;
-            }
-            find_btn_area = true;
-            for (var i in $scope.l_pro) {
-                if ($scope.l_pro[i].item_id === item.item_id) {
-                    if (item.quantity === "") {
-                        item.quantity = 0;
-                    }
-                    $scope.l_pro[i].bgcolor = "#E0E0E0";
-                    $scope.l_pro[i].img = $scope.l_pro[i].img_checked;
-                    var item_quantity = item.quantity + 1;
-                    var item_amount = item.price * item_quantity;
-                    var _find = true;
-                    $scope.l_pro[i].quantity = item_quantity;
-                    $scope.l_pro[i].icon_minus = "-";
-                    $scope.l_pro[i].icon_plus = "+";
-                    $scope.l_pro[i].showaction = true;
-                    setItem($scope.l_pro[i]);
-                    var _item = {
-                        index: item.item_id,
-                        item_name: item.item_name,
-                        quantity: item_quantity,
-                        price: item.price,
-                        showaction: true,
-                        amount: item_amount,
-                        original_price: 0.0,
-                        promotion_type: 0.0,
-                        note:''
-                    };
-
-                    for (var j in foodItems) {
-                        if (foodItems[j].index === item.item_id) {
-                            foodItems[j].quantity = foodItems[j].quantity + 1;
-                            foodItems[j].amount = foodItems[j].quantity * foodItems[j].price;
-                            $cookies.put("fooditems", JSON.stringify(foodItems));
-                            $scope.gettotal_money();
-                            _find = false;
-                            break;
-                        }
-                    }
-                    if (_find) {
-                        foodItems.push(_item);
-                        $cookies.put("fooditems", JSON.stringify(foodItems));
-                        $scope.gettotal_money();
-                    }
-
-                    break;
-                }
-            }
-        };
 
         $scope.deleteItem = function (item) {
-            var _find = false;
-            for (var i in foodItems) {
-                if (item.item_id === foodItems[i].index)
-                {
-                    for (var j in $scope.l_pro) {
-                        if ($scope.l_pro[j].item_id === item.item_id) {
-                            $scope.l_pro[j].bgcolor = "white";
-                            $scope.l_pro[j].img = $scope.l_pro[j].img_path;
-                            $scope.l_pro[j].quantity = "";
-                            $scope.l_pro[j].showaction = false;
-                            $scope.l_pro[j].icon_minus = "";
-                            $scope.l_pro[j].icon_plus = "";
-                            break;
-                        }
-                    }
-                    foodItems.splice(i, 1);
-                    $cookies.put("fooditems", JSON.stringify(foodItems));
-                    $scope.gettotal_money();
-                    _find = true;
-                    break;
-                }
-            }
-            if (!_find) {
-                $scope.selectItem(item);
-            }
-            find_btn_area = false;
-        };
-
-        $scope.change = function(item) {
-            console.log('select area, item: ' + JSON.stringify(item));
-            console.log('global_click_menu: ' + global_click_menu);
-            if(global_click_menu) {
-                global_click_menu = false;
-                document.getElementById("mySidenav").style.width = "0";
-                return;
-            }
-            if(find_btn_area) {
-                return;
-            }
-            find_btn_area = false;
-            for (var i in foodItems) {
-                if (item.item_id === foodItems[i].index)
-                {
-                    find_btn_area = true;
-                    break;
-                }
-            }
-            if(!find_btn_area) {
-                console.log('add new item');
-                $scope.selectItem(item);
-            }
-            find_btn_area = true;    
-        };
-        
-        $scope.change_quantity = function (_math, item) {
-            console.log('change quantity');
-            var _find_minus = false;
-            var _find_plus = false;
-            var _find_num = false;
-            if(!find_btn_area) {
-                return;
-            }
-            if(_math === "num") {
-                for (var i in foodItems) {
-                    if (item.item_id === foodItems[i].index)
-                    {
-                        _find_num = true;
-                        break;
-                    }
-                }
-                if(!_find_num) {
-                    console.log('add new item');
-                    $scope.selectItem(item);
-                }
-            }
-            
-            if (_math === "-") {
-                for (var i in foodItems) {
-                    if (item.item_id === foodItems[i].index)
-                    {
-                        foodItems.splice(i, 1);
-                        $cookies.put("fooditems", JSON.stringify(foodItems));
-                        for (var j in $scope.l_pro) {
-                            if ($scope.l_pro[j].item_id === item.item_id) {
-                                if ($scope.l_pro[j].quantity === 1) {
-                                    $scope.l_pro[j].quantity = "";
-                                    $scope.l_pro[j].bgcolor = "white";
-                                    $scope.l_pro[j].img = $scope.l_pro[j].img_path;
-                                    $scope.l_pro[j].showaction = false;
-                                    $scope.l_pro[j].icon_minus = "";
-                                    $scope.l_pro[j].icon_plus = "";
-                                    $scope.gettotal_money();
-                                    break;
-                                }
-                                $scope.l_pro[j].bgcolor = "#E0E0E0";
-                                $scope.l_pro[j].img = "img/checked.png";
-                                $scope.l_pro[j].quantity = $scope.l_pro[j].quantity - 1;
-                                var _item = {
-                                    index: item.item_id,
-                                    item_name: item.item_name,
-                                    quantity: $scope.l_pro[j].quantity,
-                                    price: item.price,
-                                    showaction: false,
-                                    amount: $scope.l_pro[j].quantity * item.price,
-                                    original_price: 0.0,
-                                    promotion_type: 0.0,
-                                    note:''
-                                };
-                                foodItems.push(_item);
-                                $cookies.put("fooditems", JSON.stringify(foodItems));
-                                $scope.gettotal_money();
+            global_click_menu = false;
+            if(item.quantity > 0){
+                for(var i in $rootScope.l_pro) {
+                    if($rootScope.l_pro[i].item_id === item.item_id) {
+                        $rootScope.l_pro[i].img = item.img_path;
+                        $rootScope.l_pro[i].show_quantity = false;
+                        $rootScope.l_pro[i].quantity = 0;
+                        for(var k in $rootScope.foodItems) {
+                            if (item.item_id === $rootScope.foodItems[k].index) {
+                                $rootScope.foodItems.splice(k, 1);
                                 break;
                             }
                         }
-                        _find_minus = true;
+                        $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
+                        $scope.gettotal_money();
                         break;
                     }
                 }
-                if(!_find_minus) {
-                    console.log('add new item');
-                    $scope.selectItem(item);
-                }
+            } else {
+                $scope.openpopupadditem(item);
             }
 
-            if (_math === "+") {
-                for (var i in foodItems) {
-                    if (item.item_id === foodItems[i].index)
-                    {
-                        foodItems.splice(i, 1);
-                        $cookies.put("fooditems", JSON.stringify(foodItems));
-                        for (var j in $scope.l_pro) {
-                            if ($scope.l_pro[j].item_id === item.item_id) {
-                                $scope.l_pro[j].quantity = $scope.l_pro[j].quantity + 1;
-                                var _item = {
-                                    index: item.item_id,
-                                    item_name: item.item_name,
-                                    quantity: $scope.l_pro[j].quantity,
-                                    price: item.price,
-                                    showaction: true,
-                                    amount: $scope.l_pro[j].quantity * item.price,
-                                    original_price: 0.0,
-                                    promotion_type: 0.0,
-                                    note:''
-                                };
-                                foodItems.push(_item);
-                                $cookies.put("fooditems", JSON.stringify(foodItems));
-                                $scope.gettotal_money();
-                                break;
-                            }
-                        }
-                        _find_plus = true;
-                        break;
-                    }
-                }
-                if(!_find_plus) {
-                    console.log('add new item plus');
-                    $scope.selectItem(item);
-                }
-            }
         };
                 
-        
+        $scope.openpopupadditem = function(item) {
+            global_click_menu = false;
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'PopupAddItem.html',
+                controller: 'AddItemController',
+                resolve: {
+                    item: function(){
+                        return item;
+                    }
+                }
+            });
+        };
 
         $scope.bill = function () {
-            
-            if (foodItems.length > 0) {
-                $cookies.put("fooditems", JSON.stringify(foodItems));
-                $rootScope.globals.listItemSelected = foodItems;
+            global_click_menu = false;
+            if ($rootScope.foodItems.length > 0) {
+                $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
+                $rootScope.globals.listItemSelected = $rootScope.foodItems;
                 $rootScope.globals.tablenumber = $scope.tablenumber;
                 $rootScope.globals.tablelocation = $scope.tablelocation;
                 $location.path("/bill");
@@ -445,6 +266,8 @@
                 PopupService.displayPopup('Bạn vui lòng chọn sản phẩm trước khi thanh toán.');
             }
         };
+        
+       
 
         function initJsBrige() {
             ZaloPay.ready(() => {
@@ -453,3 +276,4 @@
         }
     }
 })();
+

@@ -1,33 +1,69 @@
-<div class = "mytopweb">
-    <table>
-        <thead>
-            <tr>
-                <th style="height: 40px; width: 40px;">
-                    <div id="mySidenav" class="sidenav" ng-click="closeNav()">
-                        <a href="javascript:void(0)" class="closebtn" style="width: 100%;height: 40px;background-color: #2196F3; color: white;font-size: 15px;">DANH MỤC SẢN PHẨM</a>           
-                        <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
-                        <div ng-repeat="category in l_categories">
-                            <div ng-click="getProdInCategory(category)">
-                                <a href="javascript:void(0)" style="text-transform:uppercase; background-color: {{category.category_color}}">&raquo; {{category.category_name}}</a>
-                            </div>
-                            <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
-                        </div>
-                    </div>
-                    <img src="img/menu.png" alt="img" height="30" width="24" style="margin-left: 8px; margin-top: 5px;" ng-click="openNav()"/>
-                    
-                </th>
-                <th>
-                    <form id="search">
-                        <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..." />
-                    </form>
-                </th>
-            </tr>
-        </thead>
-    </table>
+<div id="mySidenav" class="sidenav" ng-click="closeNav()">
+    <div style="height: 30px;
+         ">
+        <div style="
+             float: left;
+             width: 70%;
+             margin-left: 30px;
+             color: #004C77;
+             font-size: 14px;"><b>THỰC ĐƠN</b></div>
+        <img src="img/close.svg" alt = "logo"/>
+    </div>
+    <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
+    <div ng-repeat="category in l_categories">
+        <div ng-click="getProdInCategory(category)">
+            <a href="javascript:void(0)" style="color: {{category.category_color}}; font-size: 14px;"> <label><img style="margin-right: 5px;" src="{{category.icon}}" alt="item"/></label> {{category.category_name}} </a>
+        </div>
+    </div>
 </div>
-<div class="row" style="margin-bottom: 90px; margin-top: 39px; margin-left: 0px; margin-right: 0px;width: 100%;">  
-    <div style="overflow-y: scroll; height: 100%;" >
-        <div ng-repeat = "item in l_pro| filter:searchText" class="col-md-12 col-sm-12 col-xs-12" style="background-color: {{item.bgcolor}};height: 55px;">
+<div>
+    <div class = "mytopweb">
+        <div style="
+             height: 30px;
+             margin-left: 15px;
+             margin-right: 15px;">    
+
+            <div style="background: url(img/menu.svg) no-repeat 0px 10px; height: 100%; width: 100%; text-align: center;" ng-click="openNav()">
+                <div style="text-align: center;margin-top: 6px;">
+                    <img src="img/logo.png" alt="logo" height="18" width="110"/>
+                </div>
+            </div>
+        </div>
+        <div >
+            <form id="search" style="
+                  margin-bottom: 8px; 
+                  margin-left: 15px;
+                  margin-right: 15px; 
+                  text-align: center;">
+                <input name="q" ng-model="searchText" type="text" size="40" placeholder = "Tìm kiếm..."/>
+            </form>
+        </div>
+    </div>
+    <div style="height: 37px; margin-left: 10px;margin-right: 10px; margin-top: 76px;">
+        <div style="height: 37px; 
+             width: 40%;
+             font-family: Arial, sans-serif;
+             font-size: 12px;
+             color: #7FA0B8;
+             letter-spacing: 0;
+             padding-top: 9px;
+             float: left;
+             text-transform: uppercase;">
+            <b>{{current_category}}</b>
+        </div>
+        <div style="height: 37px; 
+             width: 60%;
+             font-family: Arial, sans-serif;
+             font-size: 12px;
+             letter-spacing: 0;
+             padding-top: 9px;
+             float: right;
+             text-align: right;">
+            <label style="color: #7FA0B8;">Tổng số món:</label> <label style="color:#00A2E6;">{{total_item_in_category}}</label>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 99px; margin-top: 0px; margin-left: 0px; margin-right: 0px;">  
+        <div style="overflow-y: scroll; height: 100%; width: 100%;" ng-repeat = "item in l_pro| filter:searchText">
             <div class="col-md-2 col-sm-2 col-xs-2" ng-click="deleteItem(item)">
                 <div class ="top_image">
                     <img style="border-radius:50%;
@@ -45,80 +81,93 @@
                          margin: auto;" src="{{item.img}}" alt="img">
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-3" ng-click="selectItem(item)">
+            <div class="col-md-8 col-sm-8 col-xs-8" ng-click="openpopupadditem(item)"> 
                 <div style="display: inline-flex;float: left; margin-top: 8px; margin-left: 5px;">
                     <table>
-                        <tr><td style="width: {{dwidth}}px;"><b>{{item.name_view}}</b></td></tr>
+                        <tr><td><b>{{item.name_view}}</b></td></tr>
                         <tr><td>{{item.price| currency:"":0 }} vnđ</td></tr>
                     </table>
                 </div>
             </div>
-            <div class="col-md-7 col-sm-7 col-xs-7" ng-click="change(item)">
-                <div style="display: inline-flex;float: right; background-color: {{item.bgcolor}};" ng-show="item.showaction">
-                    <div class = "press_btn">
-                        <input ng-click="change_quantity('-', item)" type="button" value="{{item.icon_minus}}" style="margin-top: 3px;width: 49px;height: 49px;border-style: solid;border-width: 0px;border-radius: 25px; text-align: center;background-color:white;font-size: 18px;" >
-                    </div>
-                    <div style="width: 40px; padding: 0px; margin: 0px; margin-right: 3px;">
-                        <input ng-click="change_quantity('num', item)" type="button" ng-value ="item.quantity" style="margin-top: 3px;width: 40px;height: 49px;border-style: solid;border-width: 0px;border-radius: 6px; text-align: center;background-color:white;font-size: 18px;" >
-                    </div>
-                    <div style="width: 49px; padding: 0px; margin: 0px;">
-                        <input ng-click="change_quantity('+', item)" type="button" value="{{item.icon_plus}}" style="margin-top: 3px;width: 49px;height: 49px;border-style: solid;border-width: 0px;border-radius: 25px; text-align: center;background-color:white;font-size: 18px;" >
-                    </div>
+            <div class="col-md-2 col-sm-2 col-xs-2" style="height: 55px;" ng-click="openpopupadditem(item)">
+                <div style="
+                     text-align: center;
+                     vertical-align: central;
+                     margin-top: 17px;
+                     height: 21px;
+                     width: 27px;
+                     background: #00A2E6;
+                     color: #FFFFFF;
+                     border-radius: 100px;" ng-show=item.show_quantity>
+                    <p>
+                        {{item.quantity}}
+                    </p>   
                 </div>
             </div>
-            <div style="width: 100%; height: 1px;background-color: #EEEEEE;">
+            <div class = "line">
             </div>
         </div>
     </div>
-</div>
 
-<div class = "myfooter">
-    <div style="width:100%; height:90px;">
-        <div style="
-             height: 40px; 
-             width: 40%;
-             float: left;">
-
-            <div style="height: 40px; width: 100%; background-color: #ededed" >                            
-                <table class = "table">                
-                    <tr style="background-color: #DCEDC8;">
-                        <td valign="middle">
-                            <span>BÀN: <b>{{tablenumber}}</b>, VỊ TRÍ: <b>{{tablelocation}}</b></span>
-                        </td>
-
-                    </tr>
-                </table>
+    <div class = "myfooter">
+        <div style="height: 37px; margin-left: 15px;margin-right: 15px; margin-top: 3px;">
+            <div style="height: 37px; 
+                 width: 40%;
+                 font-family: Arial, sans-serif;
+                 font-size: 12px;
+                 color: #2D6489;
+                 letter-spacing: 0;
+                 padding-top: 9px;
+                 float: left;">
+                <b>TANG 14</b>
             </div>
-
-        </div>
-        <div style="
-             display: inline-flex;
-             height: 40px; 
-             width: 60%;
-             float: right;">
-            <div style="height: 40px; width: 100%; background-color: #ededed" >                            
-                <table class = "table">                
-                    <tr style="background-color: #DCEDC8;">
-                        <td align="center" valign="middle" style="text-align: right; vertical-align:middle; padding-right: 10px; font-weight: bold;">
-                            <span>TỔNG TIỀN: {{totalmoney| currency:"":0 }} VNĐ</span>
-                        </td>
-                    </tr>
-                </table>
+            <div style="height: 37px; 
+                 width: 60%;
+                 font-family: Arial, sans-serif;
+                 font-size: 12px;
+                 letter-spacing: 0;
+                 padding-top: 9px;
+                 float: right;
+                 text-align: right;">
+                <label style="color: #2D6489;">TỔNG TIỀN:</label> <label style="color:#00A2E6;">{{totalmoney| currency:"":0 }} VNĐ</label>
             </div>
         </div>
-
-        <button class="btn" style="
-                width: 100%;
-                height: 50px;
-                text-align: center;
-                color: white;
-                background-color: #0973b9; 
-                font-size: 20px;
-                border-color: #d1d6dc;
-                border-width: 0px;" ng-click="bill()">TẠM TÍNH</button>
+        <div class="btntamtinh" ng-click="bill()">
+            TÍNH TIỀN
+        </div>
     </div>
 </div>
 
 <script>
     document.addEventListener("touchstart", function () {}, true);
+</script>
+
+<script type="text/ng-template" id="PopupAddItem.html">
+    <form name="addItemForm">
+        <div style = "margin-bottom:10px;text-align: center;">
+            <img src="{{img_path}}" alt = "img"/>
+            <div style= "text-align: center;color:#2D6489;font-size: 14px;">
+                <b>{{item_name}}</b>
+            </div>
+            <div style= "text-align: center;color:#00A2E6;font-size: 18px;">
+                <b>{{price | currency:"":0}} VNĐ</b>
+            </div>
+            <div style = "color: #4A4A4A; font-size: 12px;text-align: center; margin-top:10px;">
+                Số lượng
+            </div>
+            <div class="row" style= "text-align: center; padding: 5px;">
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <button class="btn btn-primary" type="submit" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:40px;height:40px;" ng-click="minus()">-</button>
+                    <button class="btn btn-warning" type="button" style="background: white;border: 0px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:40px;height:40px;">{{quantity}}</button>
+                    <button class="btn btn-warning" type="button" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:40px;height:40px;" ng-click="plus()">+</button>
+                </div>
+            </div>
+            <div class="row" style= "text-align: center; padding: 5px;">
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <button class="btn btn-primary" type="submit" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:90px;" ng-click="ok()">Tiếp tục</button>
+                    <button class="btn btn-warning" type="button" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:90px;" ng-click="bill()" ng-disabled="disable_thanhtoan">Thanh toán</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </script>
