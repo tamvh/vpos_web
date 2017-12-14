@@ -135,11 +135,11 @@
                                 }, cb);
 //                            }
                         } else {
-                            PopupService.displayPopup('Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại.');
+                            PopupService.displayPopup('Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại. #Err: ' + JSON.stringify(res));
                         }
                     });
                 } else {
-                    PopupService.displayPopup('Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại.');
+                    PopupService.displayPopup('Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại. #Err: ' + JSON.stringify(response));
                 }
             });
             $rootScope.foodItems = [];
