@@ -109,8 +109,8 @@
             </div>
         </div>
     </div>
-    <div style="height: 100px; width: 100%; margin-bottom: 100px;">
-        
+    <div style="height: 100px; width: 100%; background-color: white;">
+
     </div>
 
     <div class = "myfooter">
@@ -137,8 +137,27 @@
                 <label style="color: #2D6489;">TỔNG TIỀN:</label> <label style="color:#00A2E6;">{{totalmoney| currency:"":0 }} VNĐ</label>
             </div>
         </div>
-        <div class="btntamtinh" ng-click="bill()">
-            TÍNH TIỀN
+        <div style="
+             height: 44px;
+             margin-left: 15px;
+             margin-right: 15px;
+             margin-bottom: 15px;" ng-click="bill()">
+            <button class="btn btn-primary" type="submit" style="
+                height: 44px; 
+                width: 100%;
+
+                border-radius: 4px;
+                border: 1px solid #00A2E6;
+                background-color: #E4F5FB;
+                border-radius: 4px;
+                font-family: Arial, sans-serif;
+                font-size: 18px;
+                padding-top: 9px;
+                color: #00A2E6;
+                letter-spacing: 0;
+                text-align: center;
+                vertical-align: middle;
+                ">TÍNH TIỀN</button>
         </div>
     </div>
 </div>
@@ -149,35 +168,35 @@
 
 <script type="text/ng-template" id="PopupAddItem.html">
     <form name="addItemForm">
-        <div style = "margin-bottom:10px;text-align: center;">
-            <div style = "height: 200px; width:100%;background-image: url('{{img_path}}');
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            " ng-show = {{show_img}}>
-                
-            </div>
-            <div style= "text-align: center;color:#2D6489;font-size: 15px;padding-top:15px;text-transform: uppercase;">
-                <b>{{item_name}}</b>
-            </div>
-            <div style= "text-align: center;color:#00A2E6;font-size: 18px;">
-                <b>{{price | currency:"":0}} VNĐ</b>
-            </div>
-            <div style = "color: #4A4A4A; font-size: 12px;text-align: center; margin-top:10px;">
-                Số lượng
-            </div>
-            <div class="row" style= "text-align: center; padding: 5px;">
-                <div class="col-md-12 col-xs-12 col-sm-12">
-                    <button class="btn btn-primary" type="submit" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;" ng-click="minus()">-</button>
-                    <button class="btn btn-warning" type="button" style="background: white;border: 0px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;font-size:18px;"><b>{{quantity}}</b></button>
-                    <button class="btn btn-warning" type="button" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;" ng-click="plus()">+</button>
-                </div>
-            </div>
-            <div class="row" style= "text-align: center; padding: 5px;">
-                <div class="col-md-12 col-xs-12 col-sm-12">
-                    <button class="btn btn-primary" type="submit" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:100px;height:50px;" ng-click="ok()"><b>Tiếp tục</b></button>
-                    <button class="btn btn-warning" type="button" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:100px;height:50px;" ng-click="bill()" ng-disabled="disable_thanhtoan"><b>Thanh toán</b></button>
-                </div>
-            </div>
-        </div>
+    <div style = "margin-bottom:10px;text-align: center;">
+    <div style = "height: 200px; width:100%;background-image: url('{{img_path}}');
+    background-position: center;
+    background-repeat: no-repeat;
+    " ng-show = {{show_img}}>
+
+    </div>
+    <div style= "text-align: center;color:#2D6489;font-size: 15px;padding-top:15px;text-transform: uppercase;">
+    <b>{{item_name}}</b>
+    </div>
+    <div style= "text-align: center;color:#00A2E6;font-size: 18px;">
+    <b>{{price | currency:"":0}} VNĐ</b>
+    </div>
+    <div style = "color: #4A4A4A; font-size: 12px;text-align: center; margin-top:10px;">
+    Số lượng
+    </div>
+    <div class="row" style= "text-align: center; padding: 5px;">
+    <div class="col-md-12 col-xs-12 col-sm-12">
+    <button class="btn btn-primary" type="submit" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;" ng-click="minus()">-</button>
+    <button class="btn btn-warning" type="button" style="background: white;border: 0px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;font-size:18px;"><b>{{quantity}}</b></button>
+    <button class="btn btn-warning" type="button" style="background: #D9E4ED;border: 1px solid #00A2E6;border-radius: 40px; color: #00A2E6;width:60px;height:60px;" ng-click="plus()">+</button>
+    </div>
+    </div>
+    <div class="row" style= "text-align: center; padding: 5px;">
+    <div class="col-md-12 col-xs-12 col-sm-12">
+    <button class="btn btn-primary" type="submit" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:100px;height:50px;" ng-click="ok()"><b>Tiếp tục</b></button>
+    <button class="btn btn-warning" type="button" style="background: #E4F5FB;border: 1px solid #00A2E6;border-radius: 4px; color: #00A2E6;width:100px;height:50px;" ng-click="bill()" ng-disabled="disable_thanhtoan"><b>Thanh toán</b></button>
+    </div>
+    </div>
+    </div>
     </form>
 </script>

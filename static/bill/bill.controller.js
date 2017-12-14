@@ -84,7 +84,7 @@
                 $scope.style_show_height = "height:90px;";
                 $scope.show_writeinfo = false;
                 $scope.margin_bottom = "margin-bottom: 90px;";
-                $scope.height_space = 220;
+                $scope.height_space = 110;
             }
         };
         
