@@ -6,23 +6,23 @@
     AddNoteController.$inject = ['$scope', '$timeout', '$cookies', 'item', '$uibModalInstance'];
     function AddNoteController($scope, $timeout, $cookies, item, $uibModalInstance) {
         $scope.errItemCodeOverCharacter = false;
-        $scope.item_code = '';
+        $scope.notetext = '';
         $scope.item =  item;
         $scope.typingItemNote = function() {
-            console.log("tying: " + $scope.item_code + '');
-            var typing = $scope.item_code + '';
+            console.log("tying: " + $scope.notetext + '');
+            var typing = $scope.notetext + '';
             if(typing.length > 20) {
                 typing = typing.substring(0, 19);
-                $scope.item_code = typing;
+                $scope.notetext = typing;
                 $scope.errItemCodeOverCharacter = true;
             } else {
-                $scope.item_code = typing;
+                $scope.notetext = typing;
                 $scope.errItemCodeOverCharacter = false;
             }
         };
         
         $scope.ok = function() {
-            $scope.item.note = $scope.item_code;
+            $scope.item.notetext = $scope.notetext;
             var foods = $cookies.get("fooditems");
             if(foods + '' === '' || foods === 'undefined') {
                 console.log("add item faile.");
@@ -30,7 +30,7 @@
                 $scope.l_product = JSON.parse(foods);
                 for (var i in $scope.l_product) {
                     if($scope.l_product[i].index === $scope.item.index) {
-                        $scope.l_product[i].note = $scope.item_code;
+                        $scope.l_product[i].notetext = $scope.notetext;
                         break;
                     }
                 }
@@ -45,7 +45,7 @@
         
         $scope.init = function() {
             console.log("item: " + JSON.stringify($scope.item));
-            $scope.item_code = $scope.item.note;
+            $scope.notetext = $scope.item.notetext;
             $scope.item_name = $scope.item.item_name;
             angular.element("#focusElement").focus();
         };

@@ -56,6 +56,7 @@
                 }
                 $scope.total_item_in_category = count_item_in_cate;
                 document.getElementById("mySidenav").style.width = "0";
+//                document.getElementById("overlay").style.display = "none";
                 return;
             }
             
@@ -68,6 +69,7 @@
                 }
             }
             document.getElementById("mySidenav").style.width = "0";
+//            document.getElementById("overlay").style.display = "none";
             $scope.total_item_in_category = count_item_in_cate;
         };
 
@@ -189,7 +191,7 @@
                             console.log("error getListProduct");
                         }
                         $scope.total_item_in_category = dt_items.length;
-                        console.log(JSON.stringify(dt_items));
+//                        console.log(JSON.stringify(dt_items));
                     });
             $scope.gettotal_money();
         };
@@ -207,12 +209,14 @@
         $scope.openNav = function() {
             
             global_click_menu = true;
-            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("mySidenav").style.width = "100%";
+//            document.getElementById("overlay").style.display = "block";
         };
 
         $scope.closeNav = function() {
             global_click_menu = false;
             document.getElementById("mySidenav").style.width = "0";
+//            document.getElementById("overlay").style.display = "none";
         };
 
         $scope.deleteItem = function (item) {

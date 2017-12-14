@@ -13,6 +13,7 @@
         $scope.item_code = '';
         $scope.style_show_height = "height:90px;";
         $scope.show_writeinfo = false;
+        $scope.margin_bottom = "margin-bottom: 90px;";
         $scope.item_CustomerName = "";
         $scope.item_PhoneNo = "";
         $scope.item_BillNote = "";
@@ -69,9 +70,12 @@
             if(sttwriteinfo) {
                 $scope.style_show_height = "height:200px;";
                 $scope.show_writeinfo = true;
+                $scope.margin_bottom = "margin-bottom: 200px;";
+                
             } else {
                 $scope.style_show_height = "height:90px;";
                 $scope.show_writeinfo = false;
+                $scope.margin_bottom = "margin-bottom: 90px;";
             }
         };
         
@@ -110,7 +114,7 @@
                 if (response.err === 0) {
                     var sid = response.dt.invoice_session;
                     var billid = response.dt.food_order;
-                    BillService.doPayZalo(gen_uuid(), sid, billid, $scope.total_money, $scope.l_product).then(function (res) {
+                    BillService.doPayZalo(gen_uuid(), sid, billid, $scope.total_money, $scope.l_product, item_CustomerName, item_PhoneNo, item_BillNote).then(function (res) {
                         ZaloPay.hideLoading();
                         if (res.err === 0) {
                             var zptranstoken = res.dt.zptranstoken;

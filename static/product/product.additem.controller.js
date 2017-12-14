@@ -28,7 +28,7 @@
                             amount: $scope.quantity * $scope.item.price,
                             original_price: 0.0,
                             promotion_type: 0.0,
-                            note: ''
+                            notetext: ''
                         };
 
                         for (var j in $rootScope.foodItems) {

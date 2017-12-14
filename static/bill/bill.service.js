@@ -23,10 +23,15 @@
         function doPayZalo(uuid, sesId, biId, amount, items, customer_name, phone_no, bill_note) {
             var cmd = "create";
             console.log('items: ' + JSON.stringify(items));
-            var dtJSON = {
+            
+            var dtJSONNote = {
                 customer_name: customer_name,
                 phone_no: phone_no,
-                bill_note: bill_note,
+                bill_note: bill_note
+            };
+            var dtStringNote = JSON.stringify(dtJSONNote);
+            
+            var dtJSON = {
                 merchant_code: merchant_code,
                 foodsorder_id: biId,
                 machine_name: machine_name,
@@ -36,8 +41,11 @@
                 devid: uuid,
                 apptype: 7,
                 items: items,
-                payment_method: p_method
+                payment_method: p_method,
+                note: dtStringNote
             };
+            
+            console.log('dtJSON: ' + JSON.stringify(dtJSON));
             
             var dt = JSON.stringify(dtJSON);
             var token = HMAC_SHA256_MAC(key, dt + sesId);

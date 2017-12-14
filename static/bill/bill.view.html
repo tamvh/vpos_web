@@ -13,7 +13,7 @@
     <b>Các món đã chọn</b>
 </div>
 
-<div style="overflow-y: scroll; margin-bottom: 60px;">    
+<div style="overflow-y: scroll; {{margin_bottom}}">    
     <div style="height: 100%; 
          padding: 10px;
          background-color: white;">
@@ -36,9 +36,12 @@
             <tbody>
                 <tr ng-repeat="item in l_product" ng-click="openpopup(item)">
                     <td class="col-md-9 col-sm-9 col-xs-9">
-                        <img src="img/edit.svg" alt = "logo"/> <label style="color: #004C77;">{{item.item_name}}</label> 
+                        <div style="font-size: 14px; padding-bottom: 7px;">
+                            <img src="img/edit.svg" alt = "logo"/> <label style="color: #004C77;">{{item.item_name}}</label> 
+                        </div>
+                        
                         <div style="color: #7FA0B8;font-size: 12px;">
-                            <i>{{item.note}}</i>
+                            <i>{{item.notetext}}</i>
                         </div>
                     </td>
                     <td class="col-md-1 col-sm-1 col-xs-1">{{item.quantity}}</td>
@@ -102,7 +105,7 @@
 
     <div class="row" style = "margin: 10px;">
     <div class="col-md-12 col-sm-12 col-xs-12">
-    <input style="border-radius: 100px; color: #2D6489;border: 1px solid #00A2E6;" type="text" id="focusElement" name="code" class="form-control" ng-model="item_code" ng-keydown="typingItemNote()" placeholder = "Ví dụ: ít hành, ít bún,...">
+    <input style="border-radius: 100px; color: #2D6489;border: 1px solid #00A2E6;" type="text" id="focusElement" name="code" class="form-control" ng-model="notetext" ng-keydown="typingItemNote()" placeholder = "Ví dụ: ít hành, ít bún,...">
     <span class="red" ng-show="errItemCodeOverCharacter">(*)Ghi chú không quá 20 kí tự</span>
     </div>
     </div>                                             

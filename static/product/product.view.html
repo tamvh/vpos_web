@@ -1,18 +1,18 @@
 <div id="mySidenav" class="sidenav" ng-click="closeNav()">
-    <div style="height: 30px;
+    <div style="height: 38px;
          ">
         <div style="
              float: left;
              width: 70%;
              margin-left: 30px;
              color: #004C77;
-             font-size: 14px;"><b>THỰC ĐƠN</b></div>
+             font-size: 18px;"><b>THỰC ĐƠN</b></div>
         <img src="img/close.svg" alt = "logo"/>
     </div>
     <div style="width: 100%; height: 1px;background-color: #EEEEEE;"></div>
     <div ng-repeat="category in l_categories">
         <div ng-click="getProdInCategory(category)">
-            <a href="javascript:void(0)" style="color: {{category.category_color}}; font-size: 14px;"> <label><img style="margin-right: 5px;" src="{{category.icon}}" alt="item"/></label> {{category.category_name}} </a>
+            <a href="javascript:void(0)" style="color: {{category.category_color}}; font-size: 18px;"> <i style="font-size: 18px;"><img style="margin-right: 5px;" src="{{category.icon}}" alt="item"/></i> {{category.category_name}} </a>
         </div>
     </div>
 </div>
