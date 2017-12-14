@@ -14,13 +14,16 @@
         $scope.style_show_height = "height:90px;";
         $scope.show_writeinfo = false;
         $scope.margin_bottom = "margin-bottom: 90px;";
+        $scope.height_space = 110;
         $scope.item_CustomerName = "";
         $scope.item_PhoneNo = "";
         $scope.item_BillNote = "";
         var sttwriteinfo = false;
         $scope.init = function () {
-//            var foods = $cookies.get("fooditems");
-//            console.log('foods: ' + foods);
+            $scope.style_show_height = "height:90px;";
+            $scope.show_writeinfo = false;
+            $scope.margin_bottom = "margin-bottom: 90px;";
+            $scope.height_space = 110;
             if($rootScope.foodItems.length <= 0) {
                 $location.path("/");
             } else {
@@ -36,7 +39,6 @@
                     t_money = t_money + $scope.l_product[i].amount;
                 }
                 $rootScope.foodItems = $scope.l_product;
-//                $cookies.put("fooditems", JSON.stringify($scope.l_product));
                 $scope.total_money = t_money;
                 initJsBrige();
             }
@@ -77,11 +79,12 @@
                 $scope.style_show_height = "height:200px;";
                 $scope.show_writeinfo = true;
                 $scope.margin_bottom = "margin-bottom: 200px;";
-                
+                $scope.height_space = 220;
             } else {
                 $scope.style_show_height = "height:90px;";
                 $scope.show_writeinfo = false;
                 $scope.margin_bottom = "margin-bottom: 90px;";
+                $scope.height_space = 220;
             }
         };
         
@@ -141,6 +144,7 @@
         };
 
         var cb = function (data) {
+            $location.path("/");
             if (typeof data === "object") {
                 if (data.error === 1) {
                     ZaloPay.showDialog({
@@ -148,7 +152,7 @@
                         message: "Thanh toán đơn hàng thành công",
                         button: "OK"
                     });
-                    $location.path("/");
+                    
                 } else if (data.error === 4) {
                     ZaloPay.showDialog({
                         title: "THÔNG BÁO",

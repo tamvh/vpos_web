@@ -160,9 +160,10 @@ and open the template in the editor.
 
 .header {
     position: fixed;
-    top: 0;
+    top: 0;    
     height: 38px;
-    width: 100%;
+    left: 0;
+    right: 0;
     background: #00A2E6;
 }
 
