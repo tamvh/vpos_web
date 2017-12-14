@@ -17,7 +17,19 @@
         $scope.total_item_in_category = 0;
         var dt_items = [];
         var img_host = "";
-        var global_click_menu = false;
+        var translate_re = /[¹²³áàâãäåaaaÀÁÂÃÄÅAAAÆccç©CCÇÐÐèéê?ëeeeeeÈÊË?EEEEE€gGiìíîïìiiiÌÍÎÏ?ÌIIIlLnnñNNÑòóôõöoooøÒÓÔÕÖOOOØŒr®Ršs?ßŠS?ùúûüuuuuÙÚÛÜUUUUýÿÝŸžzzŽZZ]/g;
+        var translate = {
+            "¹": "1", "²": "2", "³": "3", "á": "a", "à": "a", "â": "a", "ã": "a", "ä": "a", "å": "a", "a": "a", "a": "a", "a": "a", "À": "a", "Á": "a", "Â": "a", "Ã": "a", "Ä": "a", "Å": "a", "A": "a", "A": "a",
+            "A": "a", "Æ": "a", "c": "c", "c": "c", "ç": "c", "©": "c", "C": "c", "C": "c", "Ç": "c", "Ð": "d", "Ð": "d", "è": "e", "é": "e", "ê": "e", "?": "e", "ë": "e", "e": "e", "e": "e", "e": "e", "e": "e",
+            "e": "e", "È": "e", "Ê": "e", "Ë": "e", "?": "e", "E": "e", "E": "e", "E": "e", "E": "e", "E": "e", "€": "e", "g": "g", "G": "g", "i": "i", "ì": "i", "í": "i", "î": "i", "ï": "i", "ì": "i", "i": "i",
+            "i": "i", "i": "i", "Ì": "i", "Í": "i", "Î": "i", "Ï": "i", "?": "i", "Ì": "i", "I": "i", "I": "i", "I": "i", "l": "l", "L": "l", "n": "n", "n": "n", "ñ": "n", "N": "n", "N": "n", "Ñ": "n", "ò": "o",
+            "ó": "o", "ô": "o", "õ": "o", "ö": "o", "o": "o", "o": "o", "o": "o", "ø": "o", "Ò": "o", "Ó": "o", "Ô": "o", "Õ": "o", "Ö": "o", "O": "o", "O": "o", "O": "o", "Ø": "o", "Œ": "o", "r": "r", "®": "r",
+            "R": "r", "š": "s", "s": "s", "?": "s", "ß": "s", "Š": "s", "S": "s", "?": "s", "ù": "u", "ú": "u", "û": "u", "ü": "u", "u": "u", "u": "u", "u": "u", "u": "u", "Ù": "u", "Ú": "u", "Û": "u", "Ü": "u",
+            "U": "u", "U": "u", "U": "u", "U": "u", "ý": "y", "ÿ": "y", "Ý": "y", "Ÿ": "y", "ž": "z", "z": "z", "z": "z", "Ž": "z", "Z": "z", "Z": "z"
+        };
+        function removeAcent(s) {
+            return (s.replace(translate_re, function(match){return translate[match];}));
+        }
         function get_params() {
             var cur_url = window.location.href;
             if (cur_url.split('?').length === 2) {
@@ -48,7 +60,7 @@
                 }
             }
             if (cate_name === "Tất cả") {
-                
+
                 for (var i in dt_items) {
                     if (dt_items[i].status === 1) {
                         count_item_in_cate = count_item_in_cate + 1;
@@ -59,8 +71,8 @@
                 document.getElementById("mySidenav").style.width = "0";
                 return;
             }
-            
-            
+
+
             for (var i in dt_items) {
                 console.log("cast_mark: " + dt_items[i].cate_mask);
                 if ($scope.checkMask(dt_items[i].cate_mask, cate_value)) {
@@ -73,8 +85,8 @@
             document.getElementById("mySidenav").style.width = "0";
             $scope.total_item_in_category = count_item_in_cate;
         };
-        
-        $scope.checkMask = function(mask, value) {
+
+        $scope.checkMask = function (mask, value) {
             var hiMask = mask / 4294967296;
             var loMask = mask % 4294967296;
             var hiValue = value / 4294967296;
@@ -84,12 +96,12 @@
             return false;
         };
 
-        $scope.gettotal_money = function() {
+        $scope.gettotal_money = function () {
             var _soluong = 0;
             var _amount = 0;
             var _price = 0;
             var _total_amout = 0;
-            
+
             var foods = $cookies.get("fooditems");
             console.log('food: ' + foods);
             var arr_food = [];
@@ -97,7 +109,7 @@
                 arr_food = JSON.parse(foods);
                 $rootScope.foodItems = arr_food;
             }
-           
+
             for (var j in $rootScope.foodItems) {
                 _soluong = $rootScope.foodItems[j].quantity;
                 _price = $rootScope.foodItems[j].price;
@@ -132,7 +144,7 @@
 
                             }
                             dt_items = response.dt.items;
-                            
+
                             var foods = $cookies.get("fooditems");
                             var arr_food = [];
                             if (foods + '' !== '' && foods + '' !== 'undefined') {
@@ -142,17 +154,19 @@
                             if (arr_food.length > 0) {
                                 for (var i in dt_items) {
                                     if (dt_items[i].status === 1) {
-                                        dt_items[i].name_view = dt_items[i].item_name;    
-                                        if(checkExistImgUrl(dt_items[i].img_path)) {
+                                        dt_items[i].name_view = dt_items[i].item_name;
+                                        dt_items[i].name_view_noaccent = removeAcent(dt_items[i].name_view);
+                                        console.log("name view no accent: " + dt_items[i].name_view_noaccent);
+                                        if (checkExistImgUrl(dt_items[i].img_path)) {
                                             dt_items[i].img_path = img_host + dt_items[i].img_path;
                                         } else {
                                             dt_items[i].img_path = "img/noimg.png";
                                         }
-                                        
+
                                         dt_items[i].img_checked = "img/checked.png";
 
                                         dt_items[i].img = dt_items[i].img_path;
-                                        
+
                                         dt_items[i].quantity = 0;
                                         dt_items[i].show_quantity = false;
                                         dt_items[i].bgcolor = "white";
@@ -160,7 +174,7 @@
                                             if (arr_food[j].index === dt_items[i].item_id) {
                                                 dt_items[i].img = "img/checked.png";
                                                 dt_items[i].quantity = arr_food[j].quantity;
-                                                if(dt_items[i].quantity > 0) {
+                                                if (dt_items[i].quantity > 0) {
                                                     dt_items[i].show_quantity = true;
                                                 } else {
                                                     dt_items[i].show_quantity = false;
@@ -179,8 +193,10 @@
                                     if (dt_items[i].status === 1) {
                                         dt_items[i].bgcolor = "white";
                                         dt_items[i].name_view = dt_items[i].item_name;
+                                        dt_items[i].name_view_noaccent = removeAcent(dt_items[i].name_view);
+                                        console.log("name view no accent: " + dt_items[i].name_view_noaccent);
                                         dt_items[i].quantity = 0;
-                                        if(checkExistImgUrl(dt_items[i].img_path)) {
+                                        if (checkExistImgUrl(dt_items[i].img_path)) {
                                             dt_items[i].img_path = img_host + dt_items[i].img_path;
                                         } else {
                                             dt_items[i].img_path = "img/noimg.png";
@@ -188,7 +204,7 @@
                                         dt_items[i].showaction = false;
                                         dt_items[i].img_checked = "img/checked.png";
                                         dt_items[i].img = dt_items[i].img_path;
-                                        if(dt_items[i].quantity > 0) {
+                                        if (dt_items[i].quantity > 0) {
                                             dt_items[i].show_quantity = true;
                                         } else {
                                             dt_items[i].show_quantity = false;
@@ -197,42 +213,41 @@
                                     }
                                 }
                             }
-                            
+
                         } else {
                             console.log("error getListProduct");
                         }
                         $scope.total_item_in_category = dt_items.length;
-//                        console.log(JSON.stringify(dt_items));
                     });
             $scope.gettotal_money();
         };
-        
+
         function checkExistImgUrl(img_url) {
             var local_img_url = img_url;
-            if(local_img_url.search(".jpg")>=0 || local_img_url.search(".png")>=0 || local_img_url.search(".jepg")>=0) {
+            if (local_img_url.search(".jpg") >= 0 || local_img_url.search(".png") >= 0 || local_img_url.search(".jepg") >= 0) {
                 return true;
             }
             return false;
         }
-        
+
         $scope.getListProduct();
-        
-        $scope.openNav = function() {            
+
+        $scope.openNav = function () {
             document.getElementById("mySidenav").style.width = "100%";
         };
 
-        $scope.closeNav = function() {
+        $scope.closeNav = function () {
             document.getElementById("mySidenav").style.width = "0";
         };
 
         $scope.deleteItem = function (item) {
-            if(item.quantity > 0){
-                for(var i in $rootScope.l_pro) {
-                    if($rootScope.l_pro[i].item_id === item.item_id) {
+            if (item.quantity > 0) {
+                for (var i in $rootScope.l_pro) {
+                    if ($rootScope.l_pro[i].item_id === item.item_id) {
                         $rootScope.l_pro[i].img = item.img_path;
                         $rootScope.l_pro[i].show_quantity = false;
                         $rootScope.l_pro[i].quantity = 0;
-                        for(var k in $rootScope.foodItems) {
+                        for (var k in $rootScope.foodItems) {
                             if (item.item_id === $rootScope.foodItems[k].index) {
                                 $rootScope.foodItems.splice(k, 1);
                                 break;
@@ -248,14 +263,14 @@
             }
 
         };
-                
-        $scope.openpopupadditem = function(item) {
+
+        $scope.openpopupadditem = function (item) {
             $uibModal.open({
                 animation: true,
                 templateUrl: 'PopupAddItem.html',
                 controller: 'AddItemController',
                 resolve: {
-                    item: function(){
+                    item: function () {
                         return item;
                     }
                 }
@@ -273,8 +288,8 @@
                 PopupService.displayPopup('Bạn vui lòng chọn sản phẩm trước khi thanh toán.');
             }
         };
-        
-       
+
+
 
         function initJsBrige() {
             ZaloPay.ready(() => {
