@@ -90,13 +90,13 @@
             var _price = 0;
             var _total_amout = 0;
 
-            var foods = $cookies.get("fooditems");
-            console.log('food: ' + foods);
-            var arr_food = [];
-            if (foods + '' !== '' && foods + '' !== 'undefined') {
-                arr_food = JSON.parse(foods);
-                $rootScope.foodItems = arr_food;
-            }
+//            var foods = $cookies.get("fooditems");
+//            console.log('food: ' + foods);
+//            var arr_food = [];
+//            if (foods + '' !== '' && foods + '' !== 'undefined') {
+//                arr_food = JSON.parse(foods);
+//                $rootScope.foodItems = arr_food;
+//            }
 
             for (var j in $rootScope.foodItems) {
                 _soluong = $rootScope.foodItems[j].quantity;
@@ -134,13 +134,13 @@
                             }
                             dt_items = response.dt.items;
 
-                            var foods = $cookies.get("fooditems");
-                            var arr_food = [];
-                            if (foods + '' !== '' && foods + '' !== 'undefined') {
-                                arr_food = JSON.parse(foods);
-                                $rootScope.foodItems = arr_food;
-                            }
-                            if (arr_food.length > 0) {
+//                            var foods = $cookies.get("fooditems");
+//                            var arr_food = [];
+//                            if (foods + '' !== '' && foods + '' !== 'undefined') {
+//                                arr_food = JSON.parse(foods);
+//                                $rootScope.foodItems = arr_food;
+//                            }
+                            if ($rootScope.foodItems.length > 0) {
                                 for (var i in dt_items) {
                                     if (dt_items[i].status === 1) {
                                         dt_items[i].name_view = dt_items[i].item_name;
@@ -158,10 +158,10 @@
                                         dt_items[i].quantity = 0;
                                         dt_items[i].show_quantity = false;
                                         dt_items[i].bgcolor = "white";
-                                        for (var j in arr_food) {
-                                            if (arr_food[j].index === dt_items[i].item_id) {
+                                        for (var j in $rootScope.foodItems) {
+                                            if ($rootScope.foodItems[j].index === dt_items[i].item_id) {
                                                 dt_items[i].img = "img/checked.png";
-                                                dt_items[i].quantity = arr_food[j].quantity;
+                                                dt_items[i].quantity = $rootScope.foodItems[j].quantity;
                                                 if (dt_items[i].quantity > 0) {
                                                     dt_items[i].show_quantity = true;
                                                 } else {
@@ -240,7 +240,7 @@
                                 break;
                             }
                         }
-                        $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
+//                        $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                         $scope.gettotal_money();
                         break;
                     }
@@ -266,7 +266,7 @@
 
         $scope.bill = function () {
             if ($rootScope.foodItems.length > 0) {
-                $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
+//                $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                 $rootScope.globals.listItemSelected = $rootScope.foodItems;
                 $rootScope.globals.tablenumber = $scope.tablenumber;
                 $rootScope.globals.tablelocation = $scope.tablelocation;

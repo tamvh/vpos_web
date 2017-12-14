@@ -19,12 +19,12 @@
         $scope.item_BillNote = "";
         var sttwriteinfo = false;
         $scope.init = function () {
-            var foods = $cookies.get("fooditems");
-            console.log('foods: ' + foods);
-            if(foods + '' === '' || foods === 'undefined') {
+//            var foods = $cookies.get("fooditems");
+//            console.log('foods: ' + foods);
+            if($rootScope.foodItems.length <= 0) {
                 $location.path("/");
             } else {
-                $scope.l_product = JSON.parse(foods);
+                $scope.l_product = $rootScope.foodItems;
                 if($scope.l_product.length <= 0) {
                     $location.path("/");
                     return;
@@ -35,7 +35,8 @@
                     $scope.l_product[i].amount2k = (parseInt($scope.l_product[i].amount) / 1000) + 'K';
                     t_money = t_money + $scope.l_product[i].amount;
                 }
-                $cookies.put("fooditems", JSON.stringify($scope.l_product));
+                $rootScope.foodItems = $scope.l_product;
+//                $cookies.put("fooditems", JSON.stringify($scope.l_product));
                 $scope.total_money = t_money;
                 initJsBrige();
             }
@@ -135,7 +136,7 @@
                 }
             });
             $rootScope.foodItems = [];
-            $cookies.put("fooditems", '');
+//            $cookies.put("fooditems", '');
             $cookies.put("totalmoney", '');
         };
 
@@ -147,7 +148,7 @@
                         message: "Thanh toán đơn hàng thành công",
                         button: "OK"
                     });
-                     $location.path("/");
+                    $location.path("/");
                 } else if (data.error === 4) {
                     ZaloPay.showDialog({
                         title: "THÔNG BÁO",
