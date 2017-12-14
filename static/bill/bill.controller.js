@@ -25,6 +25,10 @@
                 $location.path("/");
             } else {
                 $scope.l_product = JSON.parse(foods);
+                if($scope.l_product.length <= 0) {
+                    $location.path("/");
+                    return;
+                }
                 var t_money = 0;
                 for (var i in $scope.l_product) {
                     $scope.l_product[i].price2k = (parseInt($scope.l_product[i].price) / 1000) + 'K';
@@ -39,7 +43,8 @@
         $scope.init();
 
         $scope.back = function () {
-            window.history.back();
+//            window.history.back();
+            $location.path("/");
         };
         function initJsBrige() {
             ZaloPay.ready(() => {

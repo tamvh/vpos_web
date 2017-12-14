@@ -1,20 +1,30 @@
 <div class="header">
     <div style="
          height: 38px; 
+         font: bold 14px Arial,Helvetica,Sans-serif;
          background-color: #00A2E6;
+         text-align: center;
          color: #FFFFFF;" >
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <button class="btn" style="height: 38px;width: 10px;float: left ;text-align: left;color: #FFFFFF;padding-left: 10px;background-color: #00A2E6;" ng-click="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-            <button class="btn" style="height: 38px;margin-right: 20px;float: left ;text-align: center;color: #FFFFFF;background-color: #00A2E6;font-family: Arial, sans-serif;"><b>TÍNH TIỀN</b></button>
+        <div class="row" style="height: 38px;">
+            <div class="col-md-1 col-sm-1 col-xs-1" style="height: 38px;text-align: right;" ng-click="back()">
+                <button class="btn btn-primary" type="submit" style="background: #00A2E6;border: 0px solid #00A2E6;height: 38px;width: 38px">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="col-md-11 col-sm-11 col-xs-11" style="height: 38px;padding-top: 10px;">
+                <label style="height: 38px;">
+                    TÍNH TIỀN
+                </label>
+            </div>
         </div>
     </div>
 </div>
-<div style="height: 20px; width: 100%; text-align: center; color:#004C77; font-size: 16px; margin-top: 40px;">
-    <b>Các món đã chọn</b>
-</div>
 
-<div style="overflow-y: scroll; {{margin_bottom}}">    
-    <div style="height: 100%; 
+<div style="padding-bottom: 20px;margin-top: 55px; {{margin_bottom}}">   
+    <div style="height: 20px; width: 100%; text-align: center; color:#004C77; font-size: 16px;">
+        <b>Các món đã chọn</b>
+    </div>
+    <div style="
          padding: 10px;
          background-color: white;">
         <table>
@@ -35,11 +45,11 @@
 
             <tbody>
                 <tr ng-repeat="item in l_product" ng-click="openpopup(item)">
-                    <td class="col-md-9 col-sm-9 col-xs-9">
-                        <div style="font-size: 14px; padding-bottom: 7px;">
+                    <td class="col-md-9 col-sm-9 col-xs-9" style="padding-bottom: 10px;">
+                        <div style="font-size: 14px;">
                             <img src="img/edit.svg" alt = "logo"/> <label style="color: #004C77;">{{item.item_name}}</label> 
                         </div>
-                        
+
                         <div style="color: #7FA0B8;font-size: 12px;">
                             <i>{{item.notetext}}</i>
                         </div>

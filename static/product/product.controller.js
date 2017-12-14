@@ -31,6 +31,7 @@
         }
 
         $scope.getProdInCategory = function (cate) {
+            console.log("cate: " + JSON.stringify(cate));
             var count_item_in_cate = 0;
             $rootScope.l_pro.splice(0, $rootScope.l_pro.length);
             var cate_name = cate.category_name;
@@ -56,12 +57,13 @@
                 }
                 $scope.total_item_in_category = count_item_in_cate;
                 document.getElementById("mySidenav").style.width = "0";
-//                document.getElementById("overlay").style.display = "none";
                 return;
             }
             
+            
             for (var i in dt_items) {
-                if (cate_value === dt_items[i].cate_mask) {
+                console.log("cast_mark: " + dt_items[i].cate_mask);
+                if ($scope.checkMask(dt_items[i].cate_mask, cate_value)) {
                     if (dt_items[i].status === 1) {
                         count_item_in_cate = count_item_in_cate + 1;
                         $rootScope.l_pro.push(dt_items[i]);
@@ -69,8 +71,17 @@
                 }
             }
             document.getElementById("mySidenav").style.width = "0";
-//            document.getElementById("overlay").style.display = "none";
             $scope.total_item_in_category = count_item_in_cate;
+        };
+        
+        $scope.checkMask = function(mask, value) {
+            var hiMask = mask / 4294967296;
+            var loMask = mask % 4294967296;
+            var hiValue = value / 4294967296;
+            var lovalue = value % 4294967296;
+            if (((hiMask & hiValue) !== 0) || ((loMask & lovalue) !== 0))
+                return true;
+            return false;
         };
 
         $scope.gettotal_money = function() {
@@ -206,21 +217,15 @@
         
         $scope.getListProduct();
         
-        $scope.openNav = function() {
-            
-            global_click_menu = true;
+        $scope.openNav = function() {            
             document.getElementById("mySidenav").style.width = "100%";
-//            document.getElementById("overlay").style.display = "block";
         };
 
         $scope.closeNav = function() {
-            global_click_menu = false;
             document.getElementById("mySidenav").style.width = "0";
-//            document.getElementById("overlay").style.display = "none";
         };
 
         $scope.deleteItem = function (item) {
-            global_click_menu = false;
             if(item.quantity > 0){
                 for(var i in $rootScope.l_pro) {
                     if($rootScope.l_pro[i].item_id === item.item_id) {
@@ -245,7 +250,6 @@
         };
                 
         $scope.openpopupadditem = function(item) {
-            global_click_menu = false;
             $uibModal.open({
                 animation: true,
                 templateUrl: 'PopupAddItem.html',
@@ -259,7 +263,6 @@
         };
 
         $scope.bill = function () {
-            global_click_menu = false;
             if ($rootScope.foodItems.length > 0) {
                 $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                 $rootScope.globals.listItemSelected = $rootScope.foodItems;

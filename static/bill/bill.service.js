@@ -10,7 +10,7 @@
         var url_zalopay = ZALOPAY_URL;
         var merchant_code = MERCHANT_CODE;
         var p_method = 1; // zalopay
-        var appTitle = "Vi tri: " + $rootScope.customer_location;
+        var appTitle = "VI TRI: " + $rootScope.customer_location;
         var machine_name = "W-VPOS";
         var key = "7VShsAFE3S4pS3lijpCkIxCDpzi7ljdS";
 
@@ -27,7 +27,8 @@
             var dtJSONNote = {
                 customer_name: customer_name,
                 phone_no: phone_no,
-                bill_note: bill_note
+                bill_note: bill_note,
+                location: $rootScope.customer_location
             };
             var dtStringNote = JSON.stringify(dtJSONNote);
             
