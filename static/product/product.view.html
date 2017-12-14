@@ -95,11 +95,12 @@
                      vertical-align: central;
                      margin-top: 17px;
                      height: 21px;
-                     width: 27px;
+                     width: 30px;
                      background: #00A2E6;
+                     font-size: 14px;
                      color: #FFFFFF;
                      border-radius: 100px;" ng-show=item.show_quantity>
-                    <p>
+                    <p style="text-align: center;">
                         {{item.quantity}}
                     </p>   
                 </div>
@@ -152,11 +153,10 @@
             <div style = "height: 200px; width:100%;background-image: url('{{img_path}}');
                             background-position: center;
                             background-repeat: no-repeat;
-                            background-size: cover;">
+                            " ng-show = {{show_img}}>
                 
             </div>
-            <!--<img src="{{img_path}}" alt = "img" width="100%"/>-->
-            <div style= "text-align: center;color:#2D6489;font-size: 14px;padding-top:15px;">
+            <div style= "text-align: center;color:#2D6489;font-size: 15px;padding-top:15px;text-transform: uppercase;">
                 <b>{{item_name}}</b>
             </div>
             <div style= "text-align: center;color:#00A2E6;font-size: 18px;">

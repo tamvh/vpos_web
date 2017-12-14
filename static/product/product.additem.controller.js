@@ -10,6 +10,7 @@
         $scope.img_path = 'img/noimg.png';
         $scope.quantity = 1;
         $scope.disable_thanhtoan = false;
+        $scope.show_img = false;
         $scope.item = item;
         $scope.ok = function () {
             console.log(JSON.stringify($scope.item));
@@ -36,17 +37,14 @@
 
                                 $rootScope.foodItems[j].quantity = $scope.quantity;
                                 $rootScope.foodItems[j].amount = $rootScope.foodItems[j].quantity * $rootScope.foodItems[j].price;
-//                                $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                                 _find = false;
                                 break;
                             }
                         }
                         if (_find) {
                             $rootScope.foodItems.push(_item);
-//                            $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                         }
                     } else {
-                        // quantity <= 0
                         $scope.item.img = $scope.item.img_path;
                         $scope.item.show_quantity = false;
                         for(var k in $rootScope.foodItems) {
@@ -54,9 +52,7 @@
                                 $rootScope.foodItems.splice(k, 1);
                                 break;
                             }
-                        }
-                        
-//                        $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
+                        }                        
                     }
                     $scope.gettotal_money();
                     $rootScope.l_pro[i] = $scope.item;
@@ -75,6 +71,9 @@
             $scope.item_name = $scope.item.item_name;
             $scope.price = $scope.item.price;
             $scope.img_path = $scope.item.img_path;
+            if($scope.img_path !== 'img/noimg.png') {
+                $scope.show_img = true;
+            }
             var qt = 0;
             if ($scope.item.quantity.toString() !== "") {
                 var qt = $scope.item.quantity;
@@ -112,14 +111,6 @@
             var _amount = 0;
             var _price = 0;
             var _total_amount = 0;
-
-//            var foods = $cookies.get("fooditems");
-//            console.log('food: ' + foods);
-//            var arr_food = [];
-//            if (foods + '' !== '' && foods + '' !== 'undefined') {
-//                arr_food = JSON.parse(foods);
-//                $rootScope.foodItems = arr_food;
-//            }
             console.log('FOOD ITEMS: ' + JSON.stringify($rootScope.foodItems));
             for (var j in $rootScope.foodItems) {
                 _soluong = $rootScope.foodItems[j].quantity;
@@ -127,15 +118,12 @@
                 _amount = _price * _soluong;
                 _total_amount = _total_amount + _amount;
             }
-            $rootScope.totalmoney = _total_amount;
-            
-//            $cookies.put("totalmoney", $rootScope.totalmoney);
+            $rootScope.totalmoney = _total_amount;            
         };
         $scope.bill = function () {
             $scope.ok();
             $uibModalInstance.close();
             if ($rootScope.foodItems.length > 0) {
-//                $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                 $rootScope.globals.listItemSelected = $rootScope.foodItems;
                 $rootScope.globals.tablenumber = $scope.tablenumber;
                 $rootScope.globals.tablelocation = $scope.tablelocation;
