@@ -134,12 +134,15 @@
                                     zptranstoken: zptranstoken
                                 }, cb);
 //                            }
+                        } else {
+                            PopupService.displayPopup('Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại.');
                         }
                     });
+                } else {
+                    PopupService.displayPopup('Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại.');
                 }
             });
             $rootScope.foodItems = [];
-//            $cookies.put("fooditems", '');
             $cookies.put("totalmoney", '');
         };
 
