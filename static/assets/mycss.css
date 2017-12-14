@@ -198,7 +198,7 @@ and open the template in the editor.
 .btn_bill {
     position: fixed;
     bottom: 0;
-    height: 55px;
+    height: 200px;
     width: 100%;
     background-color: white;
 }

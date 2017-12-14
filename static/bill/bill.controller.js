@@ -11,6 +11,12 @@
         $scope.total_money = 0;
         $scope.errItemCodeOverCharacter = false;
         $scope.item_code = '';
+        $scope.style_show_height = "height:90px;";
+        $scope.show_writeinfo = false;
+        $scope.item_CustomerName = "";
+        $scope.item_PhoneNo = "";
+        $scope.item_BillNote = "";
+        var sttwriteinfo = false;
         $scope.init = function () {
             var foods = $cookies.get("fooditems");
             console.log('foods: ' + foods);
@@ -54,6 +60,21 @@
             });
         };
         
+        $scope.writeInfo = function() {
+            if(sttwriteinfo === true) {
+                sttwriteinfo = false;
+            } else {
+                sttwriteinfo = true;
+            }
+            if(sttwriteinfo) {
+                $scope.style_show_height = "height:200px;";
+                $scope.show_writeinfo = true;
+            } else {
+                $scope.style_show_height = "height:90px;";
+                $scope.show_writeinfo = false;
+            }
+        };
+        
         $scope.typingItemNote = function() {
             console.log("tying: " + $scope.item_code + '');
             var typing = $scope.item_code + '';
@@ -79,6 +100,12 @@
             ZaloPay.showLoading();
             var uuid = gen_uuid();
             var billId = $.now();
+            var item_CustomerName = $scope.item_CustomerName ;
+            var item_PhoneNo = $scope.item_PhoneNo;
+            var item_BillNote = $scope.item_BillNote;
+            console.log("item_CustomerName: " + item_CustomerName);
+            console.log("item_PhoneNo: " + item_PhoneNo);
+            console.log("item_BillNote: " + item_BillNote);
             BillService.doGetPmsid(uuid, billId).then(function (response) {
                 if (response.err === 0) {
                     var sid = response.dt.invoice_session;

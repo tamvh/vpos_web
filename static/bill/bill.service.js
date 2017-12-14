@@ -10,7 +10,7 @@
         var url_zalopay = ZALOPAY_URL;
         var merchant_code = MERCHANT_CODE;
         var p_method = 1; // zalopay
-        var appTitle = "TABLE: " + $rootScope.globals.table_number + " - " + $rootScope.globals.table_location;
+        var appTitle = "Vi tri: " + $rootScope.customer_location;
         var machine_name = "W-VPOS";
         var key = "7VShsAFE3S4pS3lijpCkIxCDpzi7ljdS";
 
@@ -20,9 +20,13 @@
         service.doPayZalo = doPayZalo;
         return service;
 
-        function doPayZalo(uuid, sesId, biId, amount, items) {
+        function doPayZalo(uuid, sesId, biId, amount, items, customer_name, phone_no, bill_note) {
             var cmd = "create";
+            console.log('items: ' + JSON.stringify(items));
             var dtJSON = {
+                customer_name: customer_name,
+                phone_no: phone_no,
+                bill_note: bill_note,
                 merchant_code: merchant_code,
                 foodsorder_id: biId,
                 machine_name: machine_name,

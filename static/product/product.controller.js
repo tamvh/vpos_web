@@ -25,8 +25,7 @@
                 if (params.split('=').length === 2) {
                     var dt = params.split('=')[1];
                     var json_obj = JSON.parse(decodeURI(dt));
-                    $scope.tablenumber = json_obj.tablenumber;
-                    $scope.tablelocation = json_obj.tablelocation;
+                    $rootScope.customer_location = json_obj.customer_location;
                 }
             }
         }
@@ -100,6 +99,7 @@
             initJsBrige();
             get_params();
             $scope.dwidth = $(window).width();
+            $rootScope.l_categories = [];
             ProductService.getListProduct()
                     .then(function (response) {
                         if (response.err === 0) {

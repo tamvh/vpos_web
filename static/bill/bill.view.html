@@ -15,7 +15,7 @@
 
 <div style="overflow-y: scroll; margin-bottom: 60px;">    
     <div style="height: 100%; 
-         padding: 15px;
+         padding: 10px;
          background-color: white;">
         <table>
             <thead>
@@ -49,12 +49,44 @@
             </tbody>
         </table>
     </div>
-    <div style="height: 25px; width: 100%; text-align: right; color:#004C77; padding-right: 10px;padding-top: 0px;">
-        <p style="margin-right: 10px;color: #4A4A4A;font-size: 14px;"><b>Tổng tiền:</b> <b style="color: #00A2E6; font-size: 18px;">{{total_money | currency:"":0}} VNĐ</b></p>
+    <div style="height: 25px; width: 100%; text-align: right; color:#004C77; padding-right: 5px;padding-top: 0px;">
+        <p style="margin-right: 10px;color: #4A4A4A;font-size: 14px;"><b>Tổng tiền:</b> <b style="color: #00A2E6; font-size: 18px;">{{total_money| currency:"":0}} VNĐ</b></p>
     </div>
 </div>
 
-<div class = "btn_bill">
+<div class = "btn_bill" style='{{style_show_height}}'>
+    <div style="
+         height:35px; 
+         width: 100%;
+         font-size: 18px;
+         text-align: center;">
+        <button type="submit" style="color: #004C77;" ng-click="writeInfo()">
+            Ghi chú hoá đơn <i class="fa fa-sort-desc"></i>
+        </button>
+    </div>
+    <div ng-show = "show_writeinfo">
+        <div style="
+             margin-left: 10px;
+             margin-right: 10px;
+             margin-bottom: 10px;
+             ">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <input style="border-radius: 100px; color: #2D6489;border: 1px solid #00A2E6; font-size: 13px;" type="text" class="form-control" ng-model="item_CustomerName" ng-keydown="typingItemCustomerName()" placeholder = "Họ tên">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <input style="border-radius: 100px; color: #2D6489;border: 1px solid #00A2E6; font-size: 13px;" type="text" class="form-control" ng-model="item_PhoneNo" ng-keydown="typingItemPhoneNo()" placeholder = "Số điện thoại">
+                </div>
+            </div>
+        </div>
+        <div style="
+             margin-left: 10px;
+             margin-right: 10px;
+             margin-bottom: 10px;">
+            <textarea rows="2" style="border-radius: 10px;border: 1px solid #00A2E6;width: 100%; font-size: 13px;" ng-model="item_BillNote" placeholder = "Ghi chú"></textarea>
+        </div>
+    </div>
+
     <div class="btnthanhtoan" ng-click="pay()">
         THANH TOÁN
     </div>
