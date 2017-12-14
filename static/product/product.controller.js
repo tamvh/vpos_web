@@ -125,6 +125,7 @@
             get_params();
             $scope.dwidth = $(window).width();
             $rootScope.l_categories = [];
+            $rootScope.l_pro = [];
             ProductService.getListProduct()
                     .then(function (response) {
                         if (response.err === 0) {
