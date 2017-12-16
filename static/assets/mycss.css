@@ -165,6 +165,7 @@ and open the template in the editor.
     left: 0;
     right: 0;
     background: #00A2E6;
+    z-index: 100;
 }
 
 .myheader {
@@ -200,7 +201,8 @@ and open the template in the editor.
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: white;
+    background: #FFFFFF;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.11);
 }
 
 #overlay {

@@ -42,6 +42,7 @@ theApp.constant('MERCHANT_CODE', MERCHANT_CODE);
         $rootScope.foodItems = [];
         $rootScope.totalmoney = 0;
         $rootScope.customer_location = "#";
+        $rootScope.g_item_BillNote = "";
         if (localStorage.newtabInfo) {
             var newtabInfo = JSON.parse(localStorage.newtabInfo);
             $cookies.put('u', newtabInfo.u);

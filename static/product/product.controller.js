@@ -243,7 +243,6 @@
                                 break;
                             }
                         }
-//                        $cookies.put("fooditems", JSON.stringify($rootScope.foodItems));
                         $scope.gettotal_money();
                         break;
                     }

@@ -10,7 +10,7 @@
         var url_zalopay = ZALOPAY_URL;
         var merchant_code = MERCHANT_CODE;
         var p_method = 1; // zalopay
-        var appTitle = "VI TRI: " + $rootScope.customer_location;
+        var appTitle = "";
         var machine_name = "W-VPOS";
         var key = "7VShsAFE3S4pS3lijpCkIxCDpzi7ljdS";
 
@@ -22,8 +22,7 @@
 
         function doPayZalo(uuid, sesId, biId, amount, items, customer_name, phone_no, bill_note) {
             var cmd = "create";
-            console.log('items: ' + JSON.stringify(items));
-            
+            appTitle = "VI TRI: " + $rootScope.customer_location;
             var dtJSONNote = {
                 customer_name: customer_name,
                 phone_no: phone_no,

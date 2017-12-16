@@ -13,10 +13,10 @@
         $scope.show_img = false;
         $scope.item = item;
         $scope.ok = function () {
-            console.log(JSON.stringify($scope.item));
+            console.log($scope.quantity);
             for (var i in $rootScope.l_pro) {
                 if ($rootScope.l_pro[i].item_id === $scope.item.item_id) {
-                    if ($scope.item.quantity > 0) {
+                    if ($scope.quantity > 0) {
                         $scope.item.img = $scope.item.img_checked;
                         $scope.item.show_quantity = true;
                         var _find = true;
@@ -34,7 +34,6 @@
 
                         for (var j in $rootScope.foodItems) {
                             if ($rootScope.foodItems[j].index === $scope.item.item_id) {
-
                                 $rootScope.foodItems[j].quantity = $scope.quantity;
                                 $rootScope.foodItems[j].amount = $rootScope.foodItems[j].quantity * $rootScope.foodItems[j].price;
                                 _find = false;
@@ -55,6 +54,7 @@
                         }                        
                     }
                     $scope.gettotal_money();
+                    $scope.item.quantity = $scope.quantity;
                     $rootScope.l_pro[i] = $scope.item;
                     break;
                 }
@@ -63,6 +63,10 @@
         };
 
         $scope.cancel = function () {
+            $uibModalInstance.close();
+        };
+        
+        $scope.close = function() {
             $uibModalInstance.close();
         };
 
@@ -78,7 +82,11 @@
             if ($scope.item.quantity.toString() !== "") {
                 var qt = $scope.item.quantity;
             }
+            if(qt <= 0) {
+                qt = 1;
+            }
             $scope.quantity = qt;
+            
             if (qt > 0) {
                 $scope.disable_thanhtoan = false;
             } else {
@@ -89,7 +97,6 @@
 
         $scope.plus = function () {
             $scope.quantity += 1;
-            $scope.item.quantity = $scope.quantity;
             $scope.disable_thanhtoan = false;
         };
 
@@ -97,7 +104,6 @@
             console.log("minus quantity");
             if ($scope.quantity > 0) {
                 $scope.quantity -= 1;
-                $scope.item.quantity = $scope.quantity;
             }
             if ($scope.quantity <= 0) {
                 $scope.disable_thanhtoan = true;
