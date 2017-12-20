@@ -1,4 +1,0 @@
-posConfig = {
-	TEMPLATE_PRODUCT_VERSION: 1.01,
-        TEMPLATE_BILL_VERSION: 1.01
-};

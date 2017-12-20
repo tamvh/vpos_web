@@ -1,4 +1,8 @@
-var API_URL = 'https://gbcstaging.zing.vn/vpos/api';
-var ZALOPAY_URL = 'https://zalopay.com.vn/openapp/index.html';
-var UPLOAD_URL = "http://gbc.zing.vn/iot/upload/controller/";
-var MERCHANT_CODE = "maybanhangtudong"; 
+//production
+//var API_URL = 'https://vpos.zing.vn/vpos/api/';
+
+//staging
+var API_URL = 'https://gbcstaging.zing.vn/vpos/api/';
+
+//development
+//var API_URL = 'http://dev.zing.vn:8081/vpos/api/';

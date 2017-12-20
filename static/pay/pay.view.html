@@ -1,0 +1,26 @@
+<!--<div>
+    <div class="jumbotron text-center">
+         <h1>VPOS - Thanh toán ZaloPay</h1> 
+    </div>
+    Số tiền: {{amount}}
+    <p>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="payInvoice()">Thanh toán</button>
+</div>-->
+
+<div id="wrapper" align="center">
+    <div align="center"><img src="../assets/img/xacnhan_logo.png" width="70%" alt=""></div>
+    <h2 align="center">Xác nhận thanh toán</h2>
+
+    <div class="values">
+        <label>MÃ HÓA ĐƠN</label>
+        <p class="number">#{{invoice_code}}</p>
+        <br>
+        <label>TỔNG TIỀN THANH TOÁN</label>
+        <p class="number">{{amount | currency:"":0}} VNĐ</p>
+    </div>
+
+    <div align="center">
+        <a href="#" class="btn mr15" ng-click="payInvoice()">THANH TOÁN</a>
+        <a href="#" class="btn">HỦY</a>
+    </div>
+</div>
